@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #e85d04;
+  color: #fff;
+}
+
+/* Thin styled scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8cfbe;
+  border-radius: 8px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #44403a;
+}
+
+/* Print: CV page prints cleanly on A4 */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    padding-top: 0 !important;
+  }
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  .print-break {
+    break-inside: avoid;
+  }
+}
