@@ -11,14 +11,14 @@ import { SmoothScroll } from '@/components/smooth-scroll';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { BackToTop } from '@/components/back-to-top';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wasifportfolio-phi.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wasif-ali.me';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: 'Wasif Ali · Full-Stack Developer', template: '%s · Wasif Ali' },
   description: 'Full-stack developer portfolio — Flutter apps, Django backends, and websites that ship. Projects, case studies, and writing by Wasif Ali.',
   alternates: { canonical: '/' },
-  openGraph: { type: 'website', url: '/', title: 'Wasif Ali · Full-Stack Developer', description: 'Full-stack projects, technical case studies, and writing.', siteName: 'Wasif Ali', images: [{ url: 'https://wasifportfolio-phi.vercel.app/og-card.png', width: 1200, height: 630, alt: 'Wasif Ali · Full-Stack Developer' }] },
-  twitter: { card: 'summary_large_image', title: 'Wasif Ali · Full-Stack Developer', description: 'Full-stack projects, technical case studies, and writing.', images: ['https://wasifportfolio-phi.vercel.app/og-card.png'] },
+  openGraph: { type: 'website', url: '/', title: 'Wasif Ali · Full-Stack Developer', description: 'Full-stack projects, technical case studies, and writing.', siteName: 'Wasif Ali', images: [{ url: 'https://wasif-ali.me/og-card.png', width: 1200, height: 630, alt: 'Wasif Ali · Full-Stack Developer' }] },
+  twitter: { card: 'summary_large_image', title: 'Wasif Ali · Full-Stack Developer', description: 'Full-stack projects, technical case studies, and writing.', images: ['https://wasif-ali.me/og-card.png'] },
   icons: { icon: '/icons/favicon.png', shortcut: '/icons/favicon.png', apple: '/icons/favicon.png' }, manifest: '/manifest.webmanifest'
 };
 export const viewport: Viewport = { themeColor: [{ media: '(prefers-color-scheme: light)', color: '#f7f7f5' }, { media: '(prefers-color-scheme: dark)', color: '#171717' }], colorScheme: 'light dark' };
