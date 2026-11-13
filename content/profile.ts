@@ -1,0 +1,230 @@
+export const profile = {
+  name: 'Wasif Ali',
+  role: 'Full-Stack Developer',
+  heroLine: 'Build it. Ship it. Make it useful.',
+  headline: 'I build software that ships — and stays useful.',
+  location: 'Kamra, Punjab, Pakistan',
+  education: 'BS Computer Science · Air University, Kamra Campus',
+  semester: '5th semester',
+  cgpa: '3.47 / 4.00',
+  expectedGraduation: '2028',
+  email: 'bestwasifali@gmail.com',
+  github: 'https://github.com/Wasif-2005-Ali',
+  linkedin: 'https://www.linkedin.com/in/wasif-a-27620532a',
+  instagram: 'https://www.instagram.com/dude_itx_wasifali',
+  fiverr: 'https://www.fiverr.com/wasif_annotator',
+  domain: 'https://wasif-portfolio.vercel.app',
+  availability: 'Available for Opportunities',
+  summary:
+    'Computer Science undergraduate at Air University Kamra building full-stack apps and websites — from Appointly, an appointment platform with in-app chat and calls, to the live websites of OASIS Foundation and GoSafar. I like the part where an idea becomes something people can actually use.',
+  focus: [
+    'Full-stack web & mobile apps',
+    'Flutter & Dart',
+    'Databases & APIs',
+    'Data annotation for ML',
+  ],
+  stats: [
+    { value: '10', label: 'Projects documented here' },
+    { value: '3.47', label: 'CGPA / 4.00' },
+    { value: '1,000+', label: 'LinkedIn followers' },
+    { value: 'Director IT', label: '@ OASIS Foundation' },
+  ],
+  educationHistory: [
+    {
+      title: 'BS Computer Science',
+      organization: 'Air University · Aerospace & Aviation Campus Kamra',
+      period: 'Sep 2024 – Aug 2028',
+      detail: 'CGPA 3.47 / 4.00 · 5th semester · Summer-2026 internship graded A',
+    },
+    {
+      title: 'Matric, Computer Science',
+      organization: 'Faiza Inter College, Lahore Cantt',
+      period: 'Aug 2020 – Aug 2022',
+      detail: 'Grade A',
+    },
+  ],
+  sports: 'Football and badminton — badminton gold medalist at Air University Kamra.',
+  experience: [
+    {
+      title: 'Director of Information Technology',
+      organization: 'OASIS FOUNDATION',
+      location: 'Attock, Punjab, Pakistan',
+      period: 'May 2026 — Present',
+      details: [
+        "Lead the technology side of a student-led community-service organisation ('By Students, For Students'), founded 24 May 2026.",
+        "Designed and built the Foundation's public website, oasisfoundation.net, and maintain its digital presence.",
+        'Work with the Deputy Director and Founder on programmes that bring workshops, lectures and mentorship directly to campuses.',
+      ],
+    },
+    {
+      title: 'Intern',
+      organization: 'Pakistan Aeronautical Complex (PAC) — AMF, Kamra',
+      location: 'Kamra, Punjab, Pakistan',
+      period: '29 Jun – 7 Aug 2026',
+      details: [
+        'Six-week internship with mentorship and team collaboration; university-credited, Grade A.',
+      ],
+    },
+    {
+      title: 'Founder',
+      organization: 'gosafar.pk',
+      location: 'Attock, Punjab, Pakistan',
+      period: 'Jun 2026 — Present',
+      details: [
+        'Built and run the website for a Lahore car-rental, tours and rides service: fleet listings, northern-areas tour packages and WhatsApp-based booking.',
+      ],
+    },
+    {
+      title: 'Data Annotator',
+      organization: 'Freelance & Fiverr',
+      location: 'Remote',
+      period: 'May 2024 — Present',
+      details: [
+        'Two years of freelance annotation (May 2024 – May 2026, remote): bounding box, polygon, polyline, keypoint and data labelling for ML.',
+        "Now offering the same services on Fiverr as @wasif_annotator — gig: 'I will do image annotation and data labeling for machine learning'.",
+      ],
+    },
+  ],
+  credentials: [
+    {
+      title: 'C++: Algorithms',
+      issuer: 'Codio (via Coursera)',
+      period: 'Sep 2025',
+      verify: 'https://www.coursera.org/verify/NF3HS9CQ4UJF',
+    },
+    {
+      title: 'Hands-On Data Annotation: Applied Machine Learning',
+      issuer: 'LinkedIn Learning',
+      period: 'Dec 2025',
+      detail: '3h 51m',
+    },
+    {
+      title: 'Digital Marketing',
+      issuer: 'Adobe (via Coursera)',
+      period: 'Aug 2025',
+      verify: 'https://www.coursera.org/verify/VXR70R6XHYMB',
+    },
+    {
+      title: 'Create Your E-Commerce Store with Shopify',
+      issuer: 'Coursera',
+      period: 'Aug 2025',
+      verify: 'https://www.coursera.org/verify/E2X0DDN3LMTU',
+    },
+    {
+      title: 'Graphic Designing (Basic)',
+      issuer: 'PAFWA Skills Development Centre',
+      period: 'Jul 2025',
+    },
+  ],
+  activities: [
+    {
+      title: 'President — Coding Arena ’25',
+      organization: 'Dept. of Computer Science, Air University Kamra',
+      period: 'Dec 2025',
+      detail:
+        'Led planning and execution of a university-wide competitive coding event; recognised with a Certificate of Appreciation by the Head of Department.',
+    },
+    {
+      title: 'Class Representative — BS CS F’24 B',
+      organization: 'Air University Kamra',
+      period: '2024–2025',
+      detail: 'Liaison between students and faculty.',
+    },
+  ],
+  skills: [
+    { group: 'Languages', items: ['C++', 'Java', 'C#', 'Dart', 'Python (beginner)', 'SQL'] },
+    { group: 'Web', items: ['HTML', 'CSS', 'Blazor', 'Node.js', 'Express', 'jQuery', 'Bootstrap', 'Laravel', 'WordPress'] },
+    { group: 'Mobile', items: ['Flutter'] },
+    { group: 'Desktop', items: ['Java Swing', 'WPF/XAML'] },
+    { group: 'Databases', items: ['MySQL', 'SQL', 'JDBC', 'MongoDB'] },
+    { group: 'Backend & Cloud', items: ['Firebase', 'Cloud Firestore'] },
+    { group: 'Concepts', items: ['OOP', 'DSA', 'MVC'] },
+    { group: 'Tools', items: ['Visual Studio', 'VS Code', 'Android Studio', 'Dev-C++', 'Git'] },
+    {
+      group: 'AI & Data',
+      items: [
+        'Data Annotation (bounding box, polygon, polyline, keypoint, segmentation, image classification, 3D cuboid)',
+        'CVAT',
+        'AI code evaluation',
+      ],
+    },
+    {
+      group: 'Design & Marketing',
+      items: ['Canva', 'Adobe Photoshop', 'Adobe Illustrator', 'UI/UX Design', 'Basic Digital Marketing & Google Ads'],
+    },
+    { group: 'Networking', items: ['Basic Networking', 'Wireshark'] },
+    {
+      group: 'Productivity',
+      items: ['Microsoft Office (Word, Excel, PowerPoint)', 'Google Workspace (Docs, Sheets, Slides)'],
+    },
+    {
+      group: 'Soft skills',
+      items: [
+        'Communication',
+        'Teamwork & Collaboration',
+        'Leadership',
+        'Problem Solving',
+        'Time Management',
+        'Event Management & Coordination',
+        'Adaptability',
+        'Responsibility & Task Management',
+        'Presentation Skills',
+        'Client Communication',
+        'Teaching & Mentoring',
+        'Attention to Detail',
+        'Decision Making',
+        'Organisation & Planning',
+      ],
+    },
+  ],
+  principles: [
+    {
+      title: 'Useful beats impressive-looking.',
+      body: 'Work that can be read, used and improved by someone other than its author.',
+    },
+    {
+      title: 'Ship the whole thing.',
+      body: 'An idea is not done when the code runs — it is done when someone can use it.',
+    },
+    {
+      title: 'Show the work honestly.',
+      body: 'Results, limits and what is still in progress — all on the page.',
+    },
+  ],
+  services: [
+    {
+      title: 'Web development',
+      body: 'Full-stack websites and web apps — from live business sites to course platforms with auth and admin roles.',
+    },
+    {
+      title: 'App development',
+      body: 'Cross-platform Flutter apps with real backends: chat, calls, real-time sync and dashboards.',
+    },
+    {
+      title: 'Data annotation',
+      body: 'Image annotation and data labelling for ML teams — bounding box, polygon, polyline, keypoint and more. Available on Fiverr.',
+      link: 'https://www.fiverr.com/wasif_annotator',
+      linkLabel: 'See the Fiverr gig',
+    },
+  ],
+  additionalCoursework: [
+    {
+      title: 'CN Project',
+      detail:
+        'Computer Networks, 2026 — network design in Cisco Packet Tracer, with proposal, report and presentation.',
+    },
+    {
+      title: 'Real-Time Digital Clock & Stopwatch in x86 Assembly',
+      detail:
+        'MASM, Irvine32, Win32 API, 2026 — real-time updates, start/stop/reset, time-set mode, alarm settings, accuracy verified against a mobile clock.',
+    },
+    {
+      title: 'Climate Impact Calculator',
+      detail: 'C++, 2024 — emissions & AQI calculator, 100% pass rate across test cases incl. invalid inputs.',
+    },
+    {
+      title: 'Digital Stopwatch',
+      detail: 'Digital Logic Design, 2024 — logic gates + ICs, 7-segment display.',
+    },
+  ],
+} as const;
