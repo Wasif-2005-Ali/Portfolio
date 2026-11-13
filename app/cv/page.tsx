@@ -1,179 +1,200 @@
 import type { Metadata } from 'next';
-import { Download, Printer } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight, Download, ExternalLink, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { profile } from '@/content/profile';
 import { projects } from '@/content/projects';
-import PrintButton from '@/components/PrintButton';
+import { Reveal } from '@/components/reveal';
 
 export const metadata: Metadata = {
-  title: 'CV · Wasif Ali',
-  description:
-    'Curriculum vitae of Wasif Ali — Full-Stack Developer, BS Computer Science at Air University Kamra. Print-ready, with PDF download.',
+  title: 'CV',
+  description: 'Curriculum vitae of Wasif Ali, Full-Stack Developer.',
+  alternates: { canonical: '/cv' },
 };
 
-const cvProjects = [
-  'appointly',
-  'edurace',
-  'oasis-foundation-website',
-  'gosafar',
-  'course-management-system',
-  'maze-explorer',
-  'pharma-ease',
-  'inventory-management-system',
+const CV_PROJECT_SLUGS = ['appointly', 'oasis-foundation-website', 'gosafar', 'edurace', 'course-management-system'];
+
+const SKILL_GROUPS: { title: string; items: string }[] = [
+  { title: 'Languages', items: 'C++, Java, C#, Dart, Python (beginner), SQL' },
+  { title: 'Web & Mobile', items: 'Flutter, HTML, CSS, Blazor, Node.js, Express, jQuery, Bootstrap, Laravel, WordPress' },
+  { title: 'Data & Backend', items: 'MySQL, MongoDB, Firebase, Cloud Firestore, JDBC' },
+  { title: 'Tools & Design', items: 'Git, Visual Studio, VS Code, Android Studio, Dev-C++, Canva, Photoshop, Illustrator' },
+  { title: 'Concepts', items: 'OOP, DSA, MVC, data annotation (bounding box, polygon, polyline, keypoint, segmentation, 3D cuboid)' },
+];
+
+const CERTIFICATIONS: { title: string; org: string; date: string; verify?: string }[] = [
+  { title: 'C++: Algorithms', org: 'Codio (via Coursera)', date: 'Sep 2025', verify: 'https://www.coursera.org/verify/NF3HS9CQ4UJF' },
+  { title: 'Hands-On Data Annotation: Applied Machine Learning', org: 'LinkedIn Learning', date: 'Dec 2025' },
+  { title: 'Digital Marketing', org: 'Adobe (via Coursera)', date: 'Aug 2025', verify: 'https://www.coursera.org/verify/VXR70R6XHYMB' },
+  { title: 'Create Your E-Commerce Store with Shopify', org: 'Coursera', date: 'Aug 2025', verify: 'https://www.coursera.org/verify/E2X0DDN3LMTU' },
+  { title: 'Graphic Designing (Basic)', org: 'PAFWA Skills Development Centre', date: 'Jul 2025' },
+];
+
+const ACTIVITIES: { title: string; org: string; date?: string; proof?: string }[] = [
+  { title: 'President — Coding Arena ’25', org: 'Dept. of Computer Science, Air University Kamra', date: 'Dec 2025' },
+  { title: 'Class Representative — BS CS F’24 B', org: 'Air University Kamra', date: '2024–2025' },
+  { title: 'Badminton gold medalist', org: 'Air University Kamra — football & badminton' },
+];
+
+const ADDITIONAL_COURSEWORK: { title: string; detail: string }[] = [
+  { title: 'CN Project', detail: 'Computer Networks, 2026 — network design in Cisco Packet Tracer, with proposal, report and presentation.' },
+  { title: 'Real-Time Digital Clock & Stopwatch in x86 Assembly', detail: 'MASM, Irvine32, Win32 API, 2026 — real-time updates, start/stop/reset, time-set mode, alarm settings, accuracy verified against a mobile clock.' },
+  { title: 'Climate Impact Calculator', detail: 'C++, 2024 — emissions & AQI calculator, 100% pass rate across test cases incl. invalid inputs.' },
+  { title: 'Digital Stopwatch', detail: 'Digital Logic Design, 2024 — logic gates + ICs, 7-segment display.' },
 ];
 
 export default function CvPage() {
-  const selected = cvProjects
-    .map((slug) => projects.find((p) => p.slug === slug))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
-
-  return (
-    <div className="mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16">
-      {/* Actions — hidden when printing */}
-      <div className="no-print mb-8 flex flex-wrap items-center gap-3">
+  const cvProjects = CV_PROJECT_SLUGS.map((slug) => projects.find((p) => p.slug === slug)).filter(
+    (p): p is NonNullable<typeof p> => p !== undefined,
+  );
+  return <>
+    <section className="page-hero">
+      <div className="container page-heading">
+        <p className="eyebrow">Curriculum vitae</p>
+        <h1>Experience, skills,<br />and selected work.</h1>
+        <p>A readable version of my current profile. The PDF is the authoritative version. Use it for formal applications.</p>
+      </div>
+    </section>
+    <div className="container">
+      <div className="cv-actions">
         <a
-          href="/cv/Wasif_Ali_CV.pdf"
+          className="button button-primary"
+          href="/CV.pdf"
           download
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-white"
+          id="download-cv-btn"
         >
-          <Download size={16} /> Download PDF
+          <Download size={16} /> Download CV
         </a>
-        <PrintButton />
-        <p className="w-full text-xs text-muted sm:w-auto">
-          The PDF is the version Wasif supplied (it still says &ldquo;end of 4th semester&rdquo;);
-          this page uses his current, updated details.
-        </p>
       </div>
 
-      {/* CV sheet */}
-      <div className="mx-auto max-w-4xl rounded-2xl border border-line bg-white p-6 shadow-sm sm:p-10 dark:border-white/10 dark:bg-white/[0.04] print:border-0 print:p-0 print:shadow-none">
-        <header className="border-b-2 border-ink pb-6 dark:border-paper print:border-ink">
-          <h1 className="font-display text-4xl tracking-wide sm:text-5xl">WASIF ALI</h1>
-          <p className="mt-2 text-lg text-muted">
-            Full-Stack Developer · BS Computer Science Student
-          </p>
-          <p className="mt-3 text-sm text-muted">
-            {profile.location} ·{' '}
-            <a href={`mailto:${profile.email}`} className="hover:underline">
-              {profile.email}
-            </a>{' '}
-            ·{' '}
-            <a href={profile.github} target="_blank" rel="noreferrer" className="hover:underline">
-              github.com/Wasif-2005-Ali
-            </a>{' '}
-            ·{' '}
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:underline">
-              linkedin.com/in/wasif-a-27620532a
-            </a>
-          </p>
+      <Reveal className="reveal-auto"><article className="cv-sheet cv2">
+        <header className="cv2-head">
+          <div className="cv2-head-id">
+            <h2 className="cv2-name">{profile.name}</h2>
+            <p className="cv2-role">Full-Stack Developer · Flutter, Django, Web</p>
+          </div>
+          <div className="cv2-contact-grid">
+            <a className="cv2-contact-item" href={`mailto:${profile.email}`}><Mail size={15} /><span className="cv2-contact-value">{profile.email}</span></a>
+            <span className="cv2-contact-item"><MapPin size={15} /><span className="cv2-contact-value">{profile.location}</span></span>
+            <a className="cv2-contact-item" href={profile.linkedin} target="_blank" rel="noreferrer"><Linkedin size={15} /><span className="cv2-contact-value">linkedin.com/in/wasif-a-27620532a</span></a>
+            <a className="cv2-contact-item" href={profile.github} target="_blank" rel="noreferrer"><Github size={15} /><span className="cv2-contact-value">github.com/Wasif-2005-Ali</span></a>
+          </div>
         </header>
 
-        <section className="mt-8 print-break">
-          <h2 className="font-display text-lg tracking-wide">SUMMARY</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted">{profile.summary}</p>
-        </section>
+        <p className="cv2-summary">
+          Computer Science undergraduate at Air University Kamra (CGPA 3.47/4.00, 5th semester)
+          and Director IT at OASIS Foundation, where I designed and built oasisfoundation.net.
+          I build full-stack apps end to end — Appointly, an appointment platform with in-app chat
+          and calls (Flutter + Django), and the live GoSafar travel website. Focus areas: full-stack
+          web &amp; mobile apps, Flutter &amp; Dart, databases &amp; APIs, and data annotation for ML.
+        </p>
 
-        <section className="mt-8 print-break">
-          <h2 className="font-display text-lg tracking-wide">EXPERIENCE</h2>
-          <div className="mt-3 space-y-5">
-            {profile.experience.map((e) => (
-              <div key={e.title + e.organization}>
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="font-semibold">
-                    {e.title} — {e.organization}
-                  </h3>
-                  <span className="font-mono text-xs text-muted">{e.period}</span>
+        <div className="cv2-grid">
+          <div className="cv2-main">
+            <section className="cv2-sec">
+              <h2>Experience</h2>
+              {profile.experience.map((job) => (
+                <div className="cv2-item" key={job.title}>
+                  <div className="cv2-item-head">
+                    <strong>{job.title}</strong>
+                    <span>{job.period}</span>
+                  </div>
+                  <p className="cv2-org">{job.organization} · {job.location}</p>
+                  <ul>
+                    {job.details.map((detail) => <li key={detail}>{detail}</li>)}
+                  </ul>
                 </div>
-                <ul className="mt-1 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted marker:text-accent">
-                  {e.details.map((d) => (
-                    <li key={d}>{d}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </section>
 
-        <section className="mt-8 print-break">
-          <h2 className="font-display text-lg tracking-wide">EDUCATION</h2>
-          <div className="mt-3 space-y-3">
-            {profile.educationHistory.map((e) => (
-              <div key={e.title} className="flex flex-nowrap items-baseline justify-between gap-4">
-                <div className="min-w-0">
-                  <h3 className="font-semibold">{e.title}</h3>
-                  <p className="text-sm text-muted">
-                    {e.organization} · {e.detail}
-                  </p>
+            <section className="cv2-sec">
+              <h2>Education</h2>
+              {profile.educationHistory.map((item) => (
+                <div className="cv2-item" key={item.title}>
+                  <div className="cv2-item-head">
+                    <strong>{item.title}</strong>
+                    <span>{item.period}</span>
+                  </div>
+                  <p className="cv2-org">{item.organization}</p>
+                  <p>{item.detail}</p>
                 </div>
-                <span className="shrink-0 font-mono text-xs text-muted">{e.period}</span>
-              </div>
-            ))}
+              ))}
+            </section>
+
+            <section className="cv2-sec">
+              <h2>Projects</h2>
+              {cvProjects.map((project) => (
+                <div className="cv2-item" key={project.slug}>
+                  <div className="cv2-item-head cv2-item-head-actions">
+                    <strong>{project.name}</strong>
+                    <span className="cv2-item-actions">
+                      {project.repo ? <a href={project.repo} target="_blank" rel="noreferrer" className="project-github-btn" aria-label={`GitHub repo for ${project.name}`}><Github size={15} /></a> : null}
+                      {project.demo ? <a href={project.demo} target="_blank" rel="noreferrer" className="project-github-btn" aria-label={`Live demo of ${project.name}`}><ExternalLink size={15} /></a> : null}
+                    </span>
+                  </div>
+                  <p>{project.summary}</p>
+                  <p className="cv2-stack">{project.stack.slice(0, 5).join(' · ')}</p>
+                </div>
+              ))}
+            </section>
+
+            <section className="cv2-sec">
+              <h2>Additional coursework</h2>
+              {ADDITIONAL_COURSEWORK.map((item) => (
+                <div className="cv2-item" key={item.title}>
+                  <div className="cv2-item-head">
+                    <strong>{item.title}</strong>
+                  </div>
+                  <p>{item.detail}</p>
+                </div>
+              ))}
+            </section>
           </div>
-        </section>
 
-        <section className="mt-8 print-break">
-          <h2 className="font-display text-lg tracking-wide">PROJECTS</h2>
-          <div className="mt-3 space-y-3">
-            {selected.map((p) => (
-              <div key={p.slug}>
-                <h3 className="font-semibold">
-                  {p.name}{' '}
-                  <span className="font-normal text-muted">— {p.stack.join(', ')}</span>
-                </h3>
-                <p className="text-sm leading-relaxed text-muted">{p.summary}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-sm text-muted">
-            <strong className="text-ink dark:text-paper">Additional coursework:</strong>{' '}
-            {profile.additionalCoursework
-              .map((c) => `${c.title} — ${c.detail}`)
-              .join(' · ')}
-          </p>
-        </section>
+          <aside className="cv2-side">
+            <section className="cv2-sec">
+              <h2>Skills</h2>
+              {SKILL_GROUPS.map((group) => (
+                <div className="cv2-skill-group" key={group.title}>
+                  <h3>{group.title}</h3>
+                  <p>{group.items}</p>
+                </div>
+              ))}
+            </section>
 
-        <section className="mt-8 print-break">
-          <h2 className="font-display text-lg tracking-wide">CERTIFICATES</h2>
-          <ul className="mt-3 space-y-1.5 text-sm text-muted">
-            {profile.credentials.map((c) => (
-              <li key={c.title}>
-                <strong className="text-ink dark:text-paper">{c.title}</strong> — {c.issuer},{' '}
-                {c.period}
-              </li>
-            ))}
-          </ul>
-        </section>
+            <section className="cv2-sec">
+              <h2>Certifications</h2>
+              {CERTIFICATIONS.map((cert) => (
+                <div className="cv2-cert" key={cert.title}>
+                  <div className="cv2-cert-main">
+                    <strong>{cert.title}</strong>
+                    <span>{cert.org}</span>
+                    {cert.verify && <><br /><a className="cv2-verify" href={cert.verify} target="_blank" rel="noopener noreferrer">Verify certificate <ArrowUpRight size={12} /></a></>}
+                  </div>
+                  <span className="cv2-cert-date">{cert.date}</span>
+                </div>
+              ))}
+            </section>
 
-        <section className="mt-8 print-break">
-          <h2 className="font-display text-lg tracking-wide">ACTIVITIES</h2>
-          <ul className="mt-3 space-y-1.5 text-sm text-muted">
-            {profile.activities.map((a) => (
-              <li key={a.title}>
-                <strong className="text-ink dark:text-paper">{a.title}</strong> — {a.organization},{' '}
-                {a.period}. {a.detail}
-              </li>
-            ))}
-            <li>
-              <strong className="text-ink dark:text-paper">Sports:</strong> {profile.sports}
-            </li>
-          </ul>
-        </section>
+            <section className="cv2-sec">
+              <h2>Activities</h2>
+              {ACTIVITIES.map((act) => (
+                <div className="cv2-cert" key={act.title}>
+                  <div className="cv2-cert-main">
+                    <strong>{act.title}</strong>
+                    <span>{act.org}</span>
+                    {act.proof && <><br /><a className="cv2-verify" href={act.proof} target="_blank" rel="noopener noreferrer">Participation certificate <ArrowUpRight size={12} /></a></>}
+                  </div>
+                  {act.date && <span className="cv2-cert-date">{act.date}</span>}
+                </div>
+              ))}
+            </section>
+          </aside>
+        </div>
+      </article></Reveal>
 
-        <section className="mt-8">
-          <h2 className="font-display text-lg tracking-wide">SKILLS</h2>
-          <div className="mt-3 space-y-2 text-sm text-muted">
-            {profile.skills.map((g) => (
-              <p key={g.group}>
-                <strong className="text-ink dark:text-paper">{g.group}:</strong> {g.items.join(', ')}
-              </p>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      <p className="no-print mt-8 text-center text-sm text-muted">
-        <Printer size={14} className="mr-1 inline" />
-        Tip: use your browser&rsquo;s print dialog (Ctrl/Cmd + P) to save this page as a PDF.
+      <p className="cv-footnote">
+        This CV view mirrors the PDF version. For formal applications, use the PDF. <Link href="/contact">Contact me <ArrowUpRight size={12} style={{ verticalAlign: 'middle' }} /></Link>
       </p>
     </div>
-  );
+  </>;
 }
