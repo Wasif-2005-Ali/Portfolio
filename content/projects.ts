@@ -18,6 +18,7 @@ export type Project = {
   repo?: string;
   demo?: string;
   video?: string;
+  image?: string;
   accent: 'orange' | 'ink' | 'paper';
 };
 
@@ -259,6 +260,41 @@ export const projects: Project[] = [
     accent: 'ink',
   },
   {
+    slug: 'climate-impact-calculator',
+    name: 'Climate Impact Calculator',
+    category: 'Algorithms · C++',
+    kind: 'Carbon calculator · C++',
+    summary: 'A C++ console program that turns emissions figures into a carbon footprint: total CO2, an air quality index, a log-scale impact factor, and the trees and solar panels needed to offset it.',
+    problem: 'A carbon footprint is an abstract number. This calculator turns emissions into figures people can picture — how many trees to plant, how many solar panels to install — alongside CO2 totals and an air quality index.',
+    role: 'Programming Fundamentals project, 1st semester, Air University Kamra.',
+    status: 'Coursework project — 2024.',
+    featured: false,
+    stack: ['C++'],
+    highlights: [
+      'Total CO2 emissions from input figures',
+      'Air Quality Index (AQI) calculation',
+      'Climate Change Impact Factor on a log scale: log(Total Emissions + 1) × 10',
+      'Trees required and solar panels required to offset emissions',
+      'Documented with algorithm, flow chart, report and presentation',
+    ],
+    approach: [
+      { title: 'Start from emissions', body: 'The program takes emissions figures and totals CO2 output.' },
+      { title: 'Make impact readable', body: 'A log-scale factor compresses huge emission totals into a comparable score.' },
+      { title: 'Answer in actions', body: 'Trees and solar panels translate the footprint into concrete offsets.' },
+    ],
+    evidence: [
+      { label: 'Outputs', value: '5', note: 'CO2 total, AQI, impact factor, trees required, solar panels required.' },
+      { label: 'Docs', value: 'Algorithm + report', note: 'Flow chart, algorithm document and project report in the repo.' },
+    ],
+    limitations: [
+      'Console program; no graphical interface or live deployment.',
+      'Source code is not in the repository — the folder holds the algorithm, flow chart, report and presentation.',
+    ],
+    repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/Presentation_Projects/1st%20Semester/Climate%20Impact%20Calculator',
+    image: '/images/climate-impact-calculator.png',
+    accent: 'paper',
+  },
+  {
     slug: 'pharma-ease',
     name: 'Pharmacy Management System',
     category: 'Desktop · Java',
@@ -285,6 +321,7 @@ export const projects: Project[] = [
       'No live deployment; runs against a local MySQL database.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/Presentation_Projects/2nd%20Semester/OOP%20Final%20Project',
+    image: '/images/pharma-ease.png',
     accent: 'paper',
   },
   {
@@ -315,6 +352,7 @@ export const projects: Project[] = [
       'Built for coursework scale, not multi-branch retail.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/Presentation_Projects/3rd%20Semester/VP/VP%20Project',
+    image: '/images/inventory-management-system.png',
     accent: 'orange',
   },
   {
