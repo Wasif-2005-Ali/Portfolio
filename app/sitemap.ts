@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { projects } from '@/content/projects';
 import { articles } from '@/content/articles';
 
-const base = 'https://wasif-portfolio.vercel.app';
+const base = 'https://wasifportfolio-phi.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
