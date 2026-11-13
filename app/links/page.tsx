@@ -53,9 +53,9 @@ const links = [
   },
   {
     label: 'GoSafar',
-    handle: 'gosafar.pk',
-    href: 'https://gosafar.pk',
-    note: 'Car rentals, tours and rides — my live booking site.',
+    handle: 'wasif-2005-ali.github.io/gosafar-website',
+    href: 'https://wasif-2005-ali.github.io/gosafar-website/',
+    note: 'Tours, group trips and rides — my live booking site.',
     icon: Globe,
   },
   {
