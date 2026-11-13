@@ -12,7 +12,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/wasif-a-27620532a',
   instagram: 'https://www.instagram.com/dude_itx_wasifali',
   fiverr: 'https://www.fiverr.com/wasif_annotator',
-  domain: 'https://wasifportfolio-phi.vercel.app',
+  domain: 'https://wasif-ali.me',
   summary: 'Computer Science undergraduate at Air University Kamra building full-stack apps and websites — from Appointly, an appointment platform with in-app chat and calls, to the live websites of OASIS Foundation and GoSafar. I like the part where an idea becomes something people can actually use.',
   focus: ['Full-stack web & mobile apps', 'Flutter & Dart', 'Databases & APIs', 'Data annotation for ML'],
   educationHistory: [
