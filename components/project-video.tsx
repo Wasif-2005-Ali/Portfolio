@@ -9,11 +9,11 @@ export function ProjectVideoCard({ video, name, slug }: { video: string; name: s
   );
 }
 
-export function ProjectVideoPlayer({ video, name }: { video: string; name: string }) {
+export function ProjectVideoPlayer({ video, name, caption }: { video: string; name: string; caption?: string }) {
   return (
     <figure className="project-video-player">
       <video src={video} controls preload="metadata" playsInline aria-label={`Demo video of ${name}`} />
-      <figcaption>Demo walkthrough of {name} — register, log in, browse courses, and manage the catalogue as an admin.</figcaption>
+      <figcaption>{caption ?? `Demo video of ${name}.`}</figcaption>
     </figure>
   );
 }
