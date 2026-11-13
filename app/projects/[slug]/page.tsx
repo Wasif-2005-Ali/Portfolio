@@ -1,206 +1,28 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Github } from 'lucide-react';
 import { getProject, projects } from '@/content/projects';
-import { ProjectVisual } from '@/components/ProjectCard';
-import ProgressBar from '@/components/ProgressBar';
-import Reveal from '@/components/Reveal';
+import { LivePreview } from '@/components/live-preview';
+import { VisitPill } from '@/components/visit-pill';
 
-export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
-}
-
+export function generateStaticParams() { return projects.map((project) => ({ slug: project.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) return { title: 'Project not found · Wasif Ali' };
-  return {
-    title: `${project.name} · Wasif Ali`,
-    description: project.summary,
-  };
+  const { slug } = await params; const project = getProject(slug);
+  return project ? { title: project.name, description: project.summary, alternates: { canonical: `/projects/${project.slug}` }, openGraph: { title: `${project.name} · Case Study`, description: project.summary } } : { title: 'Project not found' };
 }
-
-const backendRepo = 'https://github.com/Wasif-2005-Ali/appointly-backend';
-
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) notFound();
-
-  const index = projects.findIndex((p) => p.slug === slug);
-  const next = projects[(index + 1) % projects.length];
-
-  return (
-    <>
-      <ProgressBar />
-      <article className="mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted hover:text-accent"
-        >
-          <ArrowLeft size={15} /> All projects
-        </Link>
-
-        <Reveal>
-          <p className="mt-8 font-mono text-xs uppercase tracking-[0.3em] text-accent">
-            {project.category} · {project.kind}
-          </p>
-          <h1 className="mt-3 font-display text-4xl tracking-wide sm:text-5xl">{project.name}</h1>
-          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{project.summary}</p>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-line dark:border-white/10">
-            <ProjectVisual project={project} fill />
-          </div>
-        </Reveal>
-
-        <div className="mt-10 flex flex-wrap gap-3">
-          {project.repo && (
-            <a
-              href={project.repo}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-white"
-            >
-              <Github size={16} /> View repository
-            </a>
-          )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-5 py-2.5 text-sm font-semibold transition-colors hover:border-ink dark:border-white/15 dark:bg-white/5 dark:hover:border-paper"
-            >
-              Visit live site <ArrowUpRight size={16} />
-            </a>
-          )}
-        </div>
-
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
-          <div className="space-y-12">
-            <section>
-              <h2 className="font-display text-2xl tracking-wide">The problem</h2>
-              <p className="mt-3 leading-relaxed text-muted">{project.problem}</p>
-            </section>
-
-            <section>
-              <h2 className="font-display text-2xl tracking-wide">Approach</h2>
-              <ol className="mt-4 space-y-6">
-                {project.approach.map((step, i) => (
-                  <li key={step.title} className="flex gap-4">
-                    <span className="font-mono text-sm font-bold text-accent">0{i + 1}</span>
-                    <div>
-                      <h3 className="font-semibold">{step.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-muted">{step.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </section>
-
-            <section>
-              <h2 className="font-display text-2xl tracking-wide">Highlights</h2>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted marker:text-accent">
-                {project.highlights.map((h) => (
-                  <li key={h}>{h}</li>
-                ))}
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="font-display text-2xl tracking-wide">Evidence</h2>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                {project.evidence.map((e) => (
-                  <div
-                    key={e.label}
-                    className="rounded-xl border border-line bg-white p-5 dark:border-white/10 dark:bg-white/[0.04]"
-                  >
-                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                      {e.label}
-                    </p>
-                    <p className="mt-2 font-display text-2xl tracking-wide">{e.value}</p>
-                    <p className="mt-1 text-sm text-muted">{e.note}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <h2 className="font-display text-2xl tracking-wide">Limitations</h2>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted marker:text-accent">
-                {project.limitations.map((l) => (
-                  <li key={l}>{l}</li>
-                ))}
-              </ul>
-            </section>
-          </div>
-
-          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-2xl border border-line bg-white p-6 dark:border-white/10 dark:bg-white/[0.04]">
-              <h2 className="font-mono text-xs uppercase tracking-[0.25em] text-muted">Role</h2>
-              <p className="mt-2 text-sm leading-relaxed">{project.role}</p>
-              <h2 className="mt-5 font-mono text-xs uppercase tracking-[0.25em] text-muted">
-                Status
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed">{project.status}</p>
-              <h2 className="mt-5 font-mono text-xs uppercase tracking-[0.25em] text-muted">
-                Stack
-              </h2>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {project.stack.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-full border border-line px-2.5 py-1 font-mono text-[11px] text-muted dark:border-white/15"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-              {project.slug === 'appointly' && (
-                <p className="mt-5 border-t border-line pt-4 text-sm text-muted dark:border-white/10">
-                  Second repo:{' '}
-                  <a
-                    href={backendRepo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-accent hover:underline"
-                  >
-                    appointly-backend
-                  </a>{' '}
-                  (Django).
-                </p>
-              )}
-              {!project.repo && !project.demo && (
-                <p className="mt-5 border-t border-line pt-4 text-sm text-muted dark:border-white/10">
-                  No public repository or live demo is published for this project yet.
-                </p>
-              )}
-              {!project.demo && project.repo && (
-                <p className="mt-5 border-t border-line pt-4 text-sm text-muted dark:border-white/10">
-                  No live demo — see the repository for the code.
-                </p>
-              )}
-            </div>
-          </aside>
-        </div>
-
-        <div className="mt-16 border-t border-line pt-8 dark:border-white/10">
-          <Link href={`/projects/${next.slug}`} className="group flex items-center justify-between gap-4">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
-                Next project
-              </p>
-              <p className="mt-1 font-display text-2xl tracking-wide group-hover:text-accent">
-                {next.name}
-              </p>
-            </div>
-            <ArrowRight size={22} className="shrink-0 text-muted transition-transform group-hover:translate-x-1 group-hover:text-accent" />
-          </Link>
-        </div>
-      </article>
-    </>
-  );
+export default async function ProjectCaseStudy({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; const project = getProject(slug); if (!project) notFound();
+  const related = projects.filter((item) => item.slug !== project.slug && (item.category === project.category || item.stack.some((tech) => project.stack.includes(tech)))).slice(0, 2);
+  return <>
+    <section className="case-hero"><div className="container"><div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/projects">Projects</Link><span>/</span><span>{project.name}</span></div><p className="eyebrow">Case study, {project.category}</p><h1>{project.name}<br /><span style={{ color: 'var(--muted)', fontSize: '0.48em', letterSpacing: '0' }}>{project.kind}</span></h1><p className="case-deck">{project.summary}</p><div className="case-meta"><span>{project.status}</span><span>{project.category}</span></div><div className="case-actions">{project.repo && <a className="button button-primary" href={project.repo} target="_blank" rel="noreferrer"><Github size={16} /> View source <ArrowUpRight size={16} /></a>}{project.demo && <VisitPill href={project.demo} name={project.name} />}<Link className="button button-secondary" href="/projects"><ArrowLeft size={15} /> All projects</Link></div></div></section>
+    {project.demo && <section className="section" style={{ paddingTop: 0 }}><div className="container"><LivePreview demo={project.demo} name={project.name} /></div></section>}
+    <section className="section"><div className="container case-layout"><div className="case-content">
+      <section className="case-section"><p className="eyebrow">Context</p><h2>The problem</h2><p>{project.problem}</p><p><strong>My role:</strong> {project.role}</p></section>
+      <section className="case-section"><p className="eyebrow">Implementation</p><h2>How it works</h2>{project.approach.map((step) => <div key={step.title} style={{ marginTop: 22 }}><h3 style={{ margin: 0, fontSize: 17, letterSpacing: '-.03em' }}>{step.title}</h3><p>{step.body}</p></div>)}<h3 style={{ marginTop: 28, fontSize: 15 }}>Implementation highlights</h3><ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul></section>
+      <section className="case-section"><p className="eyebrow">Evidence</p><h2>What can be verified</h2><p>The points below summarize the public repository and owner-provided CV where noted. Read the source for implementation details before drawing further conclusions.</p><div className="evidence-list">{project.evidence.map((item) => <div className="evidence-item" key={item.label}><span>{item.label}</span><strong>{item.value}</strong><p>{item.note}</p></div>)}</div></section>
+      <section className="case-section"><p className="eyebrow">Boundaries</p><h2>Limitations and next questions</h2><ul>{project.limitations.map((item) => <li key={item}>{item}</li>)}</ul><div className="case-note">Evidence-first note: a live demo demonstrates an interface and workflow; it does not by itself prove security, scale, or real-world impact.</div></section>
+    </div><aside className="case-sidebar"><h3>Technical overview</h3><div className="sidebar-stack">{project.stack.map((item) => <span className="tag" key={item}>{item}</span>)}</div><div className="sidebar-divider" /><h3>Project links</h3><p style={{ margin: '0 0 10px', color: 'var(--muted)', fontSize: 12 }}>Inspect the original implementation and, where available, the live application.</p>{project.repo ? <a className="text-link" href={project.repo} target="_blank" rel="noreferrer">Repository <ArrowUpRight size={15} /></a> : <p style={{ color: 'var(--muted)', fontSize: 11 }}>Project-specific repository link not confirmed.</p>}{project.demo && <p><a className="text-link" href={project.demo} target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a></p>}<div className="sidebar-divider" /><p style={{ color: 'var(--muted)', fontSize: 11, lineHeight: 1.65 }}>Last content review: 14 November 2026. Details may change as project repositories evolve.</p></aside></div></section>
+    {related.length > 0 && <section className="section"><div className="container"><div className="section-heading"><div><p className="eyebrow">Continue exploring</p><h2>Related work.</h2></div></div><div className="related-grid">{related.map((item) => <article className="related-card" key={item.slug}><p className="eyebrow">{item.category}</p><h3><Link href={`/projects/${item.slug}`}>{item.name} <ArrowUpRight size={15} /></Link></h3><p>{item.summary}</p></article>)}</div></div></section>}
+  </>;
 }
