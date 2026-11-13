@@ -17,6 +17,7 @@ export type Project = {
   limitations: string[];
   repo?: string;
   demo?: string;
+  video?: string;
   accent: 'orange' | 'ink' | 'paper';
 };
 
@@ -159,11 +160,11 @@ export const projects: Project[] = [
     slug: 'course-management-system',
     name: 'University Course Management System',
     category: 'Full-Stack',
-    kind: 'Course platform · FSD Lab 08',
-    summary: 'A university course platform with student/admin roles, secure login and full course management — built for FSD Lab 08.',
+    kind: 'Course platform · Node.js + MySQL',
+    summary: 'A university course platform with student/admin roles, secure login and full course management — bcrypt password hashing, JWT sessions and role-based access.',
     problem: 'Course enrolment paperwork is slow and error-prone. This system gives students a searchable catalogue and admins full control over courses and users.',
-    role: 'Built for Full Stack Development Lab 08, Air University Kamra.',
-    status: 'Coursework project — complete and verified end to end.',
+    role: 'Built as a full-stack university project — Node.js/Express backend, MySQL schema, jQuery frontend.',
+    status: 'Complete — verified end to end against a live database.',
     featured: false,
     stack: ['Node.js', 'Express', 'MySQL', 'jQuery', 'JWT', 'bcrypt'],
     highlights: [
@@ -182,10 +183,11 @@ export const projects: Project[] = [
       { label: 'Syntax checks', value: '12/12 passed', note: 'Whole codebase.' },
     ],
     limitations: [
-      'Academic lab project, not a production deployment.',
+      'University project, not a production deployment.',
       'Requires a MySQL server; no hosted demo.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/University',
+    video: '/videos/course-management-system.mp4',
     accent: 'orange',
   },
   {
