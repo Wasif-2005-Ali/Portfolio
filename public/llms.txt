@@ -2,17 +2,17 @@
 
 > Personal portfolio of Wasif Ali, Computer Science undergraduate at Air University Kamra (5th semester, CGPA 3.47/4.00). Director IT at OASIS Foundation; founder of GoSafar; data annotator on Fiverr.
 
-- Home: https://wasif-portfolio.vercel.app/
-- Projects: https://wasif-portfolio.vercel.app/projects
-- Writing: https://wasif-portfolio.vercel.app/writing
-- About: https://wasif-portfolio.vercel.app/about
-- CV: https://wasif-portfolio.vercel.app/cv
-- Contact: https://wasif-portfolio.vercel.app/contact
-- Links: https://wasif-portfolio.vercel.app/links
+- Home: https://wasifportfolio-phi.vercel.app/
+- Projects: https://wasifportfolio-phi.vercel.app/projects
+- Writing: https://wasifportfolio-phi.vercel.app/writing
+- About: https://wasifportfolio-phi.vercel.app/about
+- CV: https://wasifportfolio-phi.vercel.app/cv
+- Contact: https://wasifportfolio-phi.vercel.app/contact
+- Links: https://wasifportfolio-phi.vercel.app/links
 
 ## Featured projects
 
-- Appointly — appointment booking with in-app chat and voice/video calls (Flutter + Django): https://wasif-portfolio.vercel.app/projects/appointly
+- Appointly — appointment booking with in-app chat and voice/video calls (Flutter + Django): https://wasifportfolio-phi.vercel.app/projects/appointly
 - OASIS Foundation Website — live at https://oasisfoundation.net
 - GoSafar — tours, group trips and rides in northern Pakistan, live at https://wasif-2005-ali.github.io/gosafar-website/
 - EduRace — gamified MCQ learning and racing platform (Flutter + Firebase)
