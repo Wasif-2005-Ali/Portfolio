@@ -4,7 +4,7 @@ const httpsUrl = z.string().url().refine((value) => value.startsWith('https://')
 export const projectSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   name: z.string().trim().min(2).max(100),
-  category: z.enum(['Mobile + Backend', 'Web · Live', 'Full-Stack', 'Algorithms · C++', 'Desktop · Java', 'Web · C#']),
+  category: z.enum(['Mobile + Backend', 'Web · Live', 'Full-Stack', 'Algorithms · C++', 'Desktop · Java', 'Web · C#', 'Systems · Assembly']),
   kind: z.string().trim().min(2).max(120),
   summary: z.string().trim().min(20).max(500),
   problem: z.string().trim().min(20).max(1500),
