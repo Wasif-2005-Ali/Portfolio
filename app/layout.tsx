@@ -1,72 +1,31 @@
-import type { Metadata } from 'next';
-import { Anton, Archivo, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import IntroLoader from '@/components/IntroLoader';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { Anton, Archivo, Instrument_Serif } from 'next/font/google';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
+import { IntroLoader } from '@/components/intro-loader';
+import { PointerGlow } from '@/components/pointer-glow';
+import { CustomCursor } from '@/components/custom-cursor';
+import { MagneticButtons } from '@/components/magnetic-buttons';
+import { SmoothScroll } from '@/components/smooth-scroll';
+import { ScrollProgress } from '@/components/scroll-progress';
+import { BackToTop } from '@/components/back-to-top';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-anton', display: 'swap' });
-const archivo = Archivo({
-  subsets: ['latin'],
-  variable: '--font-archivo',
-  display: 'swap',
-});
-const instrumentSerif = Instrument_Serif({
-  weight: '400',
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  variable: '--font-instrument-serif',
-  display: 'swap',
-});
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
-  display: 'swap',
-});
-
-const siteUrl = 'https://wasifportfolio-phi.vercel.app';
-
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wasifportfolio-phi.vercel.app';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Wasif Ali · Full-Stack Developer',
-  description:
-    'Wasif Ali is a Computer Science undergraduate at Air University Kamra building full-stack apps and websites — Appointly, EduRace, the OASIS Foundation and GoSafar websites, and data annotation for ML teams.',
-  openGraph: {
-    title: 'Wasif Ali · Full-Stack Developer',
-    description:
-      'I build software that ships — and stays useful. Full-stack apps, live websites, and data annotation for ML.',
-    url: siteUrl,
-    siteName: 'Wasif Ali',
-    type: 'website',
-    images: [{ url: '/images/hero-original.png', width: 1024, height: 1536, alt: 'Wasif Ali' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Wasif Ali · Full-Stack Developer',
-    description: 'I build software that ships — and stays useful.',
-    images: ['/images/hero-original.png'],
-  },
-  icons: { icon: '/favicon.svg' },
+  title: { default: 'Wasif Ali · Full-Stack Developer', template: '%s · Wasif Ali' },
+  description: 'Full-stack developer portfolio — Flutter apps, Django backends, and websites that ship. Projects, case studies, and writing by Wasif Ali.',
+  alternates: { canonical: '/' },
+  openGraph: { type: 'website', url: '/', title: 'Wasif Ali · Full-Stack Developer', description: 'Full-stack projects, technical case studies, and writing.', siteName: 'Wasif Ali', images: [{ url: 'https://wasifportfolio-phi.vercel.app/og-card.png', width: 1200, height: 630, alt: 'Wasif Ali · Full-Stack Developer' }] },
+  twitter: { card: 'summary_large_image', title: 'Wasif Ali · Full-Stack Developer', description: 'Full-stack projects, technical case studies, and writing.', images: ['https://wasifportfolio-phi.vercel.app/og-card.png'] },
+  icons: { icon: '/icons/favicon.png', shortcut: '/icons/favicon.png', apple: '/icons/favicon.png' }, manifest: '/manifest.webmanifest'
 };
+export const viewport: Viewport = { themeColor: [{ media: '(prefers-color-scheme: light)', color: '#f7f7f5' }, { media: '(prefers-color-scheme: dark)', color: '#171717' }], colorScheme: 'light dark' };
+const displayFont = Anton({ weight: '400', subsets: ['latin'], variable: '--font-display', display: 'swap' });
+const bodyFont = Archivo({ weight: ['400', '500', '600', '700', '800'], subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const serifFont = Instrument_Serif({ weight: '400', style: 'italic', subsets: ['latin'], variable: '--font-serif', display: 'swap' });
 
-const themeInit = `(function(){try{var t=localStorage.getItem('wa-theme');if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${anton.variable} ${archivo.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
-      </head>
-      <body className="bg-paper font-sans text-ink antialiased dark:bg-[#171512] dark:text-[#f2ede4]">
-        <IntroLoader />
-        <Header />
-        <main className="pt-16">{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en" data-theme="light" suppressHydrationWarning className={`${displayFont.variable} ${bodyFont.variable} ${serifFont.variable}`}><head><script dangerouslySetInnerHTML={{ __html: "(function(){try{var t=window.localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();" }} /></head><body><PointerGlow /><CustomCursor /><MagneticButtons /><SmoothScroll /><ScrollProgress /><a className="skip-link" href="#main">Skip to content</a><SiteHeader /><main id="main">{children}</main><SiteFooter /><BackToTop /><IntroLoader /></body></html>;
 }

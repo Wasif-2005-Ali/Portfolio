@@ -1,10 +1,2 @@
 import type { MetadataRoute } from 'next';
-
-const base = 'https://wasifportfolio-phi.vercel.app';
-
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: [{ userAgent: '*', allow: '/' }],
-    sitemap: `${base}/sitemap.xml`,
-  };
-}
+export default function robots(): MetadataRoute.Robots { const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://wasifportfolio-phi.vercel.app'; return { rules: { userAgent: '*', allow: '/', disallow: ['/api/'] }, sitemap: `${base.replace(/\/$/, '')}/sitemap.xml` }; }

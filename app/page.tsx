@@ -1,259 +1,51 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Download, Mail } from 'lucide-react';
-import { profile } from '@/content/profile';
-import { featuredProjects, projects } from '@/content/projects';
+import { ArrowUpRight, BookOpen, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { projects } from '@/content/projects';
 import { articles } from '@/content/articles';
-import ProjectCard from '@/components/ProjectCard';
-import Reveal from '@/components/Reveal';
+import { profile } from '@/content/profile';
+import { ProjectShot } from '@/components/project-shot';
+import { Reveal } from '@/components/reveal';
+import { HeroGlow } from '@/components/pointer-glow';
+import { PrinciplesStack } from '@/components/principles-stack';
+import { TextMarquee } from '@/components/text-marquee';
+import { heroCutout } from './hero-image';
 
-export default function Home() {
-  return (
-    <>
-      {/* Hero */}
-      <section className="border-b border-line dark:border-white/10">
-        <div className="mx-auto grid max-w-site gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.15fr_0.85fr] md:items-center md:pt-16">
-          <div>
-            <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
-                {profile.role}
-              </p>
-              <h1 className="mt-4 font-display text-5xl leading-[1.02] tracking-wide sm:text-6xl lg:text-7xl">
-                Build it. Ship it.{' '}
-                <span className="font-serif italic tracking-normal text-accent">
-                  Make it useful.
-                </span>
-              </h1>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-sm font-medium dark:border-white/15 dark:bg-white/5">
-                <span className="h-2 w-2 rounded-full bg-green-500" />
-                {profile.availability}
-              </p>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-                I&rsquo;m {profile.name}, a Computer Science undergraduate at Air University Kamra
-                building full-stack apps and websites — from Appointly, an appointment platform
-                with in-app chat and calls, to the live websites of OASIS Foundation and GoSafar.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent dark:bg-paper dark:text-ink dark:hover:bg-accent dark:hover:text-white"
-                >
-                  Explore selected work <ArrowRight size={16} />
-                </Link>
-                <a
-                  href="/cv/Wasif_Ali_CV.pdf"
-                  download
-                  className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold transition-colors hover:border-ink dark:border-white/15 dark:bg-white/5 dark:hover:border-paper"
-                >
-                  <Download size={16} /> Download CV
-                </a>
-              </div>
-            </Reveal>
-          </div>
-          <Reveal delay={180}>
-            <div className="relative mx-auto w-full max-w-sm">
-              <div className="relative overflow-hidden rounded-3xl border border-line bg-[radial-gradient(120%_90%_at_50%_0%,#fbeed9_0%,#f3ecdf_55%,#eadfc9_100%)] shadow-[0_24px_60px_-24px_rgba(27,26,23,0.35)] dark:border-white/10 dark:bg-[radial-gradient(120%_90%_at_50%_0%,#2b2620_0%,#221f1b_60%,#1b1915_100%)]">
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/15 blur-2xl"
-                />
-                <Image
-                  src="/images/hero-cutout.webp"
-                  alt="Wasif Ali — portrait"
-                  width={1024}
-                  height={1536}
-                  priority
-                  className="relative aspect-[2/3] w-full object-cover object-top"
-                />
-              </div>
-              <div className="absolute -bottom-4 left-4 rounded-xl border border-line bg-white px-4 py-3 shadow-lg dark:border-white/10 dark:bg-[#221f1b]">
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                  {profile.education}
-                </p>
-                <p className="mt-0.5 text-sm font-semibold">
-                  5th semester · CGPA {profile.cgpa}
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+const HOME_PROJECT_SLUGS = ['appointly', 'oasis-foundation-website', 'gosafar', 'edurace'];
+const homeProjects = HOME_PROJECT_SLUGS.map((slug) => projects.find((p) => p.slug === slug)!).filter(Boolean);
 
-      {/* Selected work */}
-      <section className="mx-auto max-w-site px-4 py-16 sm:px-6">
-        <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
-                Selected work
-              </p>
-              <h2 className="mt-2 font-display text-3xl tracking-wide sm:text-4xl">
-                Projects with a{' '}
-                <span className="font-serif italic tracking-normal text-accent">point of view.</span>
-              </h2>
-              <p className="mt-3 max-w-xl text-muted">
-                Not just a stack of technologies. Each case study explains the problem, the
-                approach, the evidence, and what remains uncertain.
-              </p>
-            </div>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
-            >
-              Explore all {projects.length} projects <ArrowUpRight size={16} />
-            </Link>
-          </div>
-        </Reveal>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {featuredProjects.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 80}>
-              <ProjectCard project={p} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+const PRINCIPLES = [
+  { title: 'Useful beats impressive-looking.', body: 'Work that can be read, used and improved by someone other than its author.' },
+  { title: 'Ship the whole thing.', body: 'An idea is not done when the code runs — it is done when someone can use it.' },
+  { title: 'Show the work honestly.', body: 'Results, limits and what is still in progress — all on the page.' },
+];
 
-      {/* Working principles */}
-      <section className="border-y border-line bg-cream/60 dark:border-white/10 dark:bg-white/[0.03]">
-        <div className="mx-auto max-w-site px-4 py-16 sm:px-6">
-          <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
-              Working principles
-            </p>
-            <h2 className="mt-2 font-display text-3xl tracking-wide sm:text-4xl">
-              Useful beats{' '}
-              <span className="font-serif italic tracking-normal text-accent">impressive-looking.</span>
-            </h2>
-          </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {profile.principles.map((pr, i) => (
-              <Reveal key={pr.title} delay={i * 80}>
-                <div className="h-full rounded-2xl border border-line bg-white p-6 dark:border-white/10 dark:bg-white/[0.04]">
-                  <p className="font-mono text-xs text-accent">0{i + 1}</p>
-                  <h3 className="mt-3 font-display text-xl tracking-wide">{pr.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{pr.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+export default function HomePage() {
+  return <>
+    <section className="hero hero-echo"><HeroGlow /><div className="container hero-stage">
+      <p className="eyebrow hero-eyebrow">Full-Stack Developer</p>
+      <div className="hero-headline-wrap">
+        <h1 className="hero-giant"><span className="hg-line hg-solid">Build it. Ship it.</span><span className="hg-line hg-serifline">Make it useful.</span></h1>
+        <span className="hero-portrait" data-cursor="native">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={heroCutout} alt="" aria-hidden="true" className="hero-cutout" />
+        </span>
+        <span className="pfp-badge hero-badge">Available for Opportunities</span>
+      </div>
 
-      {/* Services */}
-      <section className="mx-auto max-w-site px-4 py-16 sm:px-6">
-        <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">What I do</p>
-          <h2 className="mt-2 font-display text-3xl tracking-wide sm:text-4xl">
-            Services, <span className="font-serif italic tracking-normal text-accent">plainly stated.</span>
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {profile.services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 80}>
-              <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6 dark:border-white/10 dark:bg-white/[0.04]">
-                <h3 className="font-display text-xl tracking-wide">{s.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{s.body}</p>
-                {'link' in s && s.link ? (
-                  <a
-                    href={s.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
-                  >
-                    {s.linkLabel} <ArrowUpRight size={15} />
-                  </a>
-                ) : (
-                  <Link
-                    href="/contact"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
-                  >
-                    Get in touch <ArrowUpRight size={15} />
-                  </Link>
-                )}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <p className="hero-copy hero-copy-center">I&apos;m <span className="accent-serif accent-serif-name">Wasif Ali</span>, a Computer Science undergraduate at Air University Kamra building full-stack apps and websites — from Appointly, an appointment platform with in-app chat and calls, to the live websites of OASIS Foundation and GoSafar.</p><div className="hero-actions hero-actions-center"><Link className="button button-primary" href="/projects">Explore selected work <ArrowUpRight size={17} /></Link><a className="button button-secondary" href="/CV.pdf" download>Download CV <Download size={16} /></a></div><div className="hero-socials hero-socials-center"><a href={profile.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub</a><a href={profile.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn</a><a href={`mailto:${profile.email}`}><Mail size={16} /> Email</a></div>
+    </div></section>
 
-      {/* Field notes */}
-      <section className="border-y border-line bg-cream/60 dark:border-white/10 dark:bg-white/[0.03]">
-        <div className="mx-auto max-w-site px-4 py-16 sm:px-6">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
-                  Field notes
-                </p>
-                <h2 className="mt-2 font-display text-3xl tracking-wide sm:text-4xl">
-                  Writing from{' '}
-                  <span className="font-serif italic tracking-normal text-accent">the work itself.</span>
-                </h2>
-                <p className="mt-3 max-w-xl text-muted">
-                  Short notes on algorithms and data annotation — what building things actually
-                  taught me.
-                </p>
-              </div>
-              <Link
-                href="/writing"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
-              >
-                Browse all writing <ArrowUpRight size={16} />
-              </Link>
-            </div>
-          </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {articles.map((a, i) => (
-              <Reveal key={a.slug} delay={i * 80}>
-                <Link
-                  href={`/writing/${a.slug}`}
-                  className="group block h-full rounded-2xl border border-line bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_-16px_rgba(27,26,23,0.25)] dark:border-white/10 dark:bg-white/[0.04]"
-                >
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                    {a.category} · {a.readTime}
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl tracking-wide group-hover:text-accent">
-                    {a.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{a.deck}</p>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+    <TextMarquee />
 
-      {/* Stats + CTA */}
-      <section className="mx-auto max-w-site px-4 py-16 sm:px-6">
-        <div className="grid gap-6 rounded-2xl bg-ink p-8 text-paper sm:grid-cols-2 lg:grid-cols-4 dark:bg-paper dark:text-ink">
-          {profile.stats.map((s) => (
-            <div key={s.label}>
-              <p className="font-display text-3xl tracking-wide sm:text-4xl">{s.value}</p>
-              <p className="mt-1 font-mono text-xs uppercase tracking-wider opacity-70">{s.label}</p>
-            </div>
-          ))}
-        </div>
-        <Reveal>
-          <div className="mt-12 text-center">
-            <h2 className="font-display text-3xl tracking-wide sm:text-4xl">
-              Have a project in mind?{' '}
-              <span className="font-serif italic tracking-normal text-accent">Let&rsquo;s talk.</span>
-            </h2>
-            <p className="mx-auto mt-3 max-w-md text-muted">
-              Web apps, Flutter apps, or data annotation for your ML team — the fastest way to
-              reach me is email.
-            </p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accentdeep"
-            >
-              <Mail size={16} /> {profile.email}
-            </a>
-          </div>
-        </Reveal>
-      </section>
-    </>
-  );
+    <section className="section"><div className="container"><Reveal className="reveal-auto"><div className="section-heading"><div><p className="eyebrow">Selected work</p><h2>Projects with a point of view.</h2></div><div><p>Not just a stack of technologies. Each case study explains the problem, the approach, the evidence, and what remains uncertain.</p><Link className="text-link" href="/projects">Explore all projects <ArrowUpRight size={16} /></Link></div></div></Reveal><div className="project-grid">{homeProjects.map((project, index) => <Reveal key={project.slug} delay={(index % 3) * 90}><article className={`project-card project-${project.accent}`}>{project.demo && <ProjectShot demo={project.demo} name={project.name} />}<div className="project-card-top"><h3 className="project-card-name">{project.name}</h3><div className="project-card-top-actions">{project.repo && <a href={project.repo} target="_blank" rel="noreferrer" className="project-github-btn" aria-label={`GitHub repo for ${project.name}`}><Github size={15} /></a>}<Link href={`/projects/${project.slug}`} className="project-arrow project-arrow-link" aria-label={`Read the case study of ${project.name}`}><ArrowUpRight size={19} /></Link></div></div><div className="project-card-body"><p className="project-summary">{project.summary}</p><div className="tag-row">{project.stack.slice(0, 4).map((tag) => <span className="tag" key={tag}>{tag}</span>)}{project.stack.length > 4 && <span className="tag more-tag">+{project.stack.length - 4}</span>}</div></div></article></Reveal>)}</div></div></section>
+
+
+    <section className="section"><div className="container"><Reveal className="reveal-auto"><div className="section-heading"><div><p className="eyebrow">Working principles</p><h2>Useful beats impressive-looking.</h2></div><p>My goal is to make work that can be read, used, and improved by someone other than its author.</p></div></Reveal><PrinciplesStack principles={PRINCIPLES} /></div></section>
+
+    <section className="section"><div className="container"><Reveal className="reveal-auto"><div className="section-heading"><div><p className="eyebrow">Field notes</p><h2>Notes from the work.</h2></div><p>Short notes on algorithms, data annotation, and building things people can use.</p></div></Reveal><div className="writing-list">{articles.map((article, index) => <Reveal key={article.slug} className="reveal-auto" delay={(index % 3) * 60}><article className="writing-row"><div className="writing-meta">{article.category}<br />{article.readTime}</div><div className="writing-main"><h3 className="writing-title"><Link href={`/writing/${article.slug}`}>{article.title}</Link></h3><p className="writing-deck">{article.deck}</p></div><Link className="writing-arrow" href={`/writing/${article.slug}`} aria-label={`Read ${article.title}`}><ArrowUpRight size={18} /></Link></article></Reveal>)}</div><div style={{ marginTop: 22 }}><Link className="text-link" href="/writing">Browse all writing <ArrowUpRight size={16} /></Link></div></div></section>
+
+    <section className="section"><div className="container"><Reveal className="reveal-auto"><div className="stats-strip"><div className="stat-item"><span className="stat-value">10</span><span className="stat-label">Projects documented here</span></div><div className="stat-item"><span className="stat-value">3.47</span><span className="stat-label">CGPA / 4.00</span></div><div className="stat-item"><span className="stat-value">1,000+</span><span className="stat-label">LinkedIn followers</span></div><div className="stat-item"><span className="stat-value">Director IT</span><span className="stat-label">@ OASIS Foundation</span></div></div></Reveal><p className="fine-print">Project count reflects the currently documented portfolio, not an independent measure of impact. Details and limits are provided on each project page.</p></div></section>
+
+    <section className="section"><div className="container"><Reveal className="reveal-auto"><div className="closing-cta"><div><p className="eyebrow">Open to conversations</p><h2>Have a <span className="accent-serif accent-serif-statement">problem</span> worth<br className="desktop-only" /> thinking through?</h2><p>For full-stack roles, freelance projects, and thoughtful collaboration.</p></div><div className="closing-actions"><Link className="button button-primary" href="/contact">Start a conversation <ArrowUpRight size={17} /></Link><Link className="button button-secondary" href="/about"><BookOpen size={16} /> More about me</Link></div></div></Reveal></div></section>
+  </>;
 }
