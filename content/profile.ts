@@ -13,7 +13,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/wasif-a-27620532a',
   instagram: 'https://www.instagram.com/dude_itx_wasifali',
   fiverr: 'https://www.fiverr.com/wasif_annotator',
-  domain: 'https://wasif-portfolio.vercel.app',
+  domain: 'https://wasifportfolio-phi.vercel.app',
   availability: 'Available for Opportunities',
   summary:
     'Computer Science undergraduate at Air University Kamra building full-stack apps and websites — from Appointly, an appointment platform with in-app chat and calls, to the live websites of OASIS Foundation and GoSafar. I like the part where an idea becomes something people can actually use.',
