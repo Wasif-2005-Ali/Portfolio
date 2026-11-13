@@ -19,6 +19,7 @@ export const projectSchema = z.object({
   repo: httpsUrl.optional(),
   demo: httpsUrl.optional(),
   video: z.string().startsWith('/').optional(),
+  image: z.string().startsWith('/').optional(),
   accent: z.enum(['orange', 'ink', 'paper'])
 }).strict();
 
