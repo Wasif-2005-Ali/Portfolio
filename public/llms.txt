@@ -1,25 +1,35 @@
 # Wasif Ali — Full-Stack Developer
 
-> Personal portfolio of Wasif Ali, Computer Science undergraduate at Air University Kamra (5th semester, CGPA 3.47/4.00). Director IT at OASIS Foundation; founder of GoSafar; data annotator on Fiverr.
+> Portfolio of Wasif Ali, a Computer Science undergraduate at Air University Kamra and a full-stack developer building Flutter apps, Django backends, and websites that ship. His work pairs working software with honest evidence: what was built, what can be verified, and what the limits are.
 
-- Home: https://wasifportfolio-phi.vercel.app/
-- Projects: https://wasifportfolio-phi.vercel.app/projects
-- Writing: https://wasifportfolio-phi.vercel.app/writing
-- About: https://wasifportfolio-phi.vercel.app/about
-- CV: https://wasifportfolio-phi.vercel.app/cv
-- Contact: https://wasifportfolio-phi.vercel.app/contact
-- Links: https://wasifportfolio-phi.vercel.app/links
+## About
 
-## Featured projects
+- Education: BS Computer Science, Air University — Aerospace & Aviation Campus Kamra (2024–2028), CGPA 3.47/4.00.
+- Experience: Director IT at OASIS Foundation (May 2026–Present) — built oasisfoundation.net; Founder of GoSafar (Jun 2026–Present); Data Annotator, freelance & Fiverr (May 2024–Present); Intern at Pakistan Aeronautical Complex, AMF Kamra (Jun–Aug 2026, Grade A).
+- Skills: C++, Java, C#, Dart, Python, SQL; Flutter, Blazor, Node.js, Express, jQuery; MySQL, MongoDB, Firebase; data annotation (bounding box, polygon, polyline, keypoint, segmentation, 3D cuboid); Git, VS Code, Android Studio.
 
-- Appointly — appointment booking with in-app chat and voice/video calls (Flutter + Django): https://wasifportfolio-phi.vercel.app/projects/appointly
-- OASIS Foundation Website — live at https://oasisfoundation.net
-- GoSafar — tours, group trips and rides in northern Pakistan, live at https://wasif-2005-ali.github.io/gosafar-website/
-- EduRace — gamified MCQ learning and racing platform (Flutter + Firebase)
+## Selected projects
 
-## Contact
+- Appointly: appointment booking with in-app chat and voice/video calls — Flutter + Django + MongoDB + WebRTC.
+- OASIS Foundation Website: the public website of a student-led community-service organisation — https://oasisfoundation.net
+- GoSafar: tours, group trips and rides across northern Pakistan — https://wasif-2005-ali.github.io/gosafar-website/
+- EduRace: gamified MCQ learning and racing platform — Flutter + Firebase.
+- University Course Management System, AccessDesk, Maze Explorer, Pharmacy Management System, Inventory Management System, Task & Appointment Management System: additional full-stack, desktop and coursework projects documented on the portfolio site and GitHub.
 
-- Email: bestwasifali@gmail.com
+## Pages
+
+- [Home](https://wasifportfolio-phi.vercel.app/): selected work and introduction.
+- [Projects](https://wasifportfolio-phi.vercel.app/projects): case studies explaining each project's problem, approach, evidence and open questions.
+- [Writing](https://wasifportfolio-phi.vercel.app/writing): technical writing.
+- [About](https://wasifportfolio-phi.vercel.app/about)
+- [CV](https://wasifportfolio-phi.vercel.app/cv)
+- [Contact](https://wasifportfolio-phi.vercel.app/contact)
+- [Links](https://wasifportfolio-phi.vercel.app/links)
+
+## Elsewhere
+
 - GitHub: https://github.com/Wasif-2005-Ali
 - LinkedIn: https://www.linkedin.com/in/wasif-a-27620532a
 - Fiverr: https://www.fiverr.com/wasif_annotator
+- Instagram: https://www.instagram.com/dude_itx_wasifali
+- Email: bestwasifali@gmail.com
