@@ -131,27 +131,27 @@ export const projects: Project[] = [
     category: 'Web · Live',
     kind: 'Travel booking website',
     summary:
-      'Car rentals, tours and rides in Lahore — a live booking website with fleet listings, northern-areas tours and WhatsApp booking.',
+      'Tours, group trips and rides across northern Pakistan — a live booking website with tour packages, 4x4 jeep safaris and WhatsApp booking.',
     problem:
-      'Travellers in Lahore book cars and tours over phone calls and scattered WhatsApp chats. GoSafar puts the fleet, fares and tours in one place and keeps booking one tap away.',
+      'Travellers across Kamra, Attock and Islamabad plan trips over scattered WhatsApp chats. GoSafar puts tours, group trips and custom packages in one place and keeps booking one tap away.',
     role: 'Founder & developer.',
-    status: 'Live at gosafar.pk.',
+    status: 'Live on GitHub Pages.',
     featured: true,
     stack: ['HTML', 'CSS', 'JavaScript'],
     highlights: [
-      'Fleet listings across economy, sedan, SUV and luxury',
-      'Tour packages: Hunza, Swat & Kalam, Naran Kaghan, Neelum & Kashmir',
-      'City-to-city rides, airport transfers and corporate packages',
+      'Weekly fixed group trips and 100% tailor-made private tours',
+      'Tour packages: Hunza, Kalam, Naran, Shugran and Skardu',
+      '4x4 jeep safaris, hotel stays, photography, meals and camping trips',
       'WhatsApp booking on every listing',
     ],
     approach: [
       {
-        title: 'Show the fleet',
-        body: 'Each vehicle lists class, seats, features and starting fare so travellers can compare quickly.',
+        title: 'Show the trips',
+        body: 'Tour pages lead with destinations, group departures and what is included — transport, stays, meals and photography.',
       },
       {
         title: 'Sell the journey',
-        body: 'Tour pages lead with destinations and durations, with fares per day.',
+        body: 'Packages bundle transport, stays, meals and a guide, so travellers see the whole trip before they ask for a price.',
       },
       {
         title: 'Keep booking human',
@@ -159,16 +159,16 @@ export const projects: Project[] = [
       },
     ],
     evidence: [
-      { label: 'Live', value: 'gosafar.pk', note: 'Public booking website.' },
+      { label: 'Live', value: 'GitHub Pages', note: 'Public booking website.' },
       {
-        label: 'Fleet',
-        value: '11 vehicles',
-        note: 'Listed with fares, from Alto to Land Cruiser V8.',
+        label: 'Travellers',
+        value: '50+',
+        note: 'Happy travellers, per the live site.',
       },
       {
-        label: 'Tours',
-        value: '4 regions',
-        note: 'Hunza, Swat, Naran Kaghan, Neelum & Kashmir.',
+        label: 'Destinations',
+        value: '10+',
+        note: 'Across northern Pakistan, per the live site.',
       },
     ],
     limitations: [
@@ -176,7 +176,7 @@ export const projects: Project[] = [
       'Fares and availability are managed by the business and change.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/gosafar-website',
-    demo: 'https://gosafar.pk',
+    demo: 'https://wasif-2005-ali.github.io/gosafar-website/',
     accent: 'paper',
   },
   {
