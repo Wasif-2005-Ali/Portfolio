@@ -1,20 +1,10 @@
+import { articleSchema } from '@/lib/validation/content';
+
 // DRAFTS — the owner can edit these articles freely.
 // Both are grounded in his real work (Maze Explorer, Fiverr annotation).
 // Nothing here claims results that were not measured.
 
-export type Article = {
-  slug: string;
-  title: string;
-  deck: string;
-  category: string;
-  date: string;
-  readTime: string;
-  status: 'Published' | 'Draft';
-  projectSlugs: string[];
-  sections: { heading: string; paragraphs: string[] }[];
-  references: { label: string; href: string }[];
-};
-
+export type Article = { slug: string; title: string; deck: string; category: string; date: string; readTime: string; status: 'Published' | 'Draft'; projectSlugs: string[]; sections: { heading: string; paragraphs: string[]; bullets?: string[] }[]; references: { label: string; href: string }[] };
 export const articles: Article[] = [
   {
     slug: 'dfs-vs-bfs-building-a-maze',
@@ -93,7 +83,6 @@ export const articles: Article[] = [
     ],
   },
 ];
+articleSchema.array().parse(articles);
 
-export function getArticle(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug);
-}
+export function getArticle(slug: string): Article | undefined { return articles.find((article) => article.slug === slug); }

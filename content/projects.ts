@@ -1,7 +1,9 @@
+import { projectSchema } from '@/lib/validation/content';
+
 export type Project = {
   slug: string;
   name: string;
-  category: string;
+  category: 'Mobile + Backend' | 'Web · Live' | 'Full-Stack' | 'Algorithms · C++' | 'Desktop · Java' | 'Web · C#';
   kind: string;
   summary: string;
   problem: string;
@@ -11,10 +13,9 @@ export type Project = {
   stack: string[];
   highlights: string[];
   approach: { title: string; body: string }[];
-  evidence: { label: string; value: string; note: string }[];
+  evidence: { label: string; value: string; note: string; source?: string }[];
   limitations: string[];
   repo?: string;
-  repoNote?: string;
   demo?: string;
   accent: 'orange' | 'ink' | 'paper';
 };
@@ -25,10 +26,8 @@ export const projects: Project[] = [
     name: 'Appointly',
     category: 'Mobile + Backend',
     kind: 'Appointment platform · Flutter + Django',
-    summary:
-      'Appointment booking with in-app chat and voice/video calls: a Flutter app with a Django backend, built end to end.',
-    problem:
-      'Booking an appointment is only half the job — patients and providers also need to talk before and after it. Appointly keeps booking, chat and calls in one place instead of three apps.',
+    summary: 'Appointment booking with in-app chat and voice/video calls: a Flutter app with a Django backend, built end to end.',
+    problem: 'Booking an appointment is only half the job — patients and providers also need to talk before and after it. Appointly keeps booking, chat and calls in one place instead of three apps.',
     role: 'Solo developer — Flutter frontend and Django backend.',
     status: 'In active development.',
     featured: true,
@@ -40,38 +39,19 @@ export const projects: Project[] = [
       'Django auth with JWT; chat and call services wired in settings/URLs/ASGI',
     ],
     approach: [
-      {
-        title: 'Book first',
-        body: 'Appointments, users and chat history live in the app with SQLite, so the core flow works before any server is involved.',
-      },
-      {
-        title: 'Add the server',
-        body: 'Django serves auth (JWT) plus chat and call services, with chat/call data in MongoDB collections.',
-      },
-      {
-        title: 'Connect calls',
-        body: 'A WebRTC call screen follows the backend call protocol for signalling between callers.',
-      },
+      { title: 'Book first', body: 'Appointments, users and chat history live in the app with SQLite, so the core flow works before any server is involved.' },
+      { title: 'Add the server', body: 'Django serves auth (JWT) plus chat and call services, with chat/call data in MongoDB collections.' },
+      { title: 'Connect calls', body: 'A WebRTC call screen follows the backend call protocol for signalling between callers.' },
     ],
     evidence: [
-      {
-        label: 'Repos',
-        value: '2',
-        note: 'appointly-frontend (Flutter) and appointly-backend (Django).',
-      },
-      {
-        label: 'Services',
-        value: 'Chat + Call',
-        note: 'Two Django service apps wired into the backend.',
-      },
+      { label: 'Repos', value: '2', note: 'appointly-frontend (Flutter) and appointly-backend (Django).' },
+      { label: 'Services', value: 'Chat + Call', note: 'Two Django service apps wired into the backend.' },
     ],
     limitations: [
       'Frontend and backend are not yet connected end to end in a public deployment; integration is in progress.',
       'No public demo yet — the app runs locally while the hosted backend is being finished.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/appointly-frontend',
-    repoNote: 'Second repo: appointly-backend',
-    demo: undefined,
     accent: 'orange',
   },
   {
@@ -79,10 +59,8 @@ export const projects: Project[] = [
     name: 'OASIS Foundation Website',
     category: 'Web · Live',
     kind: 'Community website · Director IT',
-    summary:
-      'The public website of OASIS Foundation, a student-led community-service organisation — designed and built as its Director IT.',
-    problem:
-      'OASIS runs workshops, lectures and mentorship inside campuses across Pakistan, but it had no home on the web to explain what it does or how students join.',
+    summary: 'The public website of OASIS Foundation, a student-led community-service organisation — designed and built as its Director IT.',
+    problem: 'OASIS runs workshops, lectures and mentorship inside campuses across Pakistan, but it had no home on the web to explain what it does or how students join.',
     role: 'Director IT, OASIS Foundation — designed and built the site.',
     status: 'Live at oasisfoundation.net; actively maintained.',
     featured: true,
@@ -93,30 +71,13 @@ export const projects: Project[] = [
       'Join flow and FAQs for students across Pakistan',
     ],
     approach: [
-      {
-        title: 'Say what it is',
-        body: 'The site leads with the mission — by students, for students — before any detail.',
-      },
-      {
-        title: 'Show the work',
-        body: 'Programmes, impact and volunteer roles are presented as concrete things to join, not slogans.',
-      },
-      {
-        title: 'Make joining easy',
-        body: 'A join form and clear contact paths turn readers into volunteers.',
-      },
+      { title: 'Say what it is', body: 'The site leads with the mission — by students, for students — before any detail.' },
+      { title: 'Show the work', body: 'Programmes, impact and volunteer roles are presented as concrete things to join, not slogans.' },
+      { title: 'Make joining easy', body: 'A join form and clear contact paths turn readers into volunteers.' },
     ],
     evidence: [
-      {
-        label: 'Live',
-        value: 'oasisfoundation.net',
-        note: 'Public website, built and maintained by the owner.',
-      },
-      {
-        label: 'Founded',
-        value: '24 May 2026',
-        note: 'Grassroots organisation; every programme is free for students.',
-      },
+      { label: 'Live', value: 'oasisfoundation.net', note: 'Public website, built and maintained by the owner.' },
+      { label: 'Founded', value: '24 May 2026', note: 'Grassroots organisation; every programme is free for students.' },
     ],
     limitations: [
       'Content is owned by the Foundation and changes with its programmes.',
@@ -130,10 +91,8 @@ export const projects: Project[] = [
     name: 'GoSafar',
     category: 'Web · Live',
     kind: 'Travel booking website',
-    summary:
-      'Tours, group trips and rides across northern Pakistan — a live booking website with tour packages, 4x4 jeep safaris and WhatsApp booking.',
-    problem:
-      'Travellers across Kamra, Attock and Islamabad plan trips over scattered WhatsApp chats. GoSafar puts tours, group trips and custom packages in one place and keeps booking one tap away.',
+    summary: 'Tours, group trips and rides across northern Pakistan — a live booking website with tour packages, 4x4 jeep safaris and WhatsApp booking.',
+    problem: 'Travellers across Kamra, Attock and Islamabad plan trips over scattered WhatsApp chats. GoSafar puts tours, group trips and custom packages in one place and keeps booking one tap away.',
     role: 'Founder & developer.',
     status: 'Live on GitHub Pages.',
     featured: true,
@@ -145,31 +104,14 @@ export const projects: Project[] = [
       'WhatsApp booking on every listing',
     ],
     approach: [
-      {
-        title: 'Show the trips',
-        body: 'Tour pages lead with destinations, group departures and what is included — transport, stays, meals and photography.',
-      },
-      {
-        title: 'Sell the journey',
-        body: 'Packages bundle transport, stays, meals and a guide, so travellers see the whole trip before they ask for a price.',
-      },
-      {
-        title: 'Keep booking human',
-        body: 'Every listing ends in a WhatsApp chat — no accounts, no checkout friction.',
-      },
+      { title: 'Show the trips', body: 'Tour pages lead with destinations, group departures and what is included — transport, stays, meals and photography.' },
+      { title: 'Sell the journey', body: 'Packages bundle transport, stays, meals and a guide, so travellers see the whole trip before they ask for a price.' },
+      { title: 'Keep booking human', body: 'Every listing ends in a WhatsApp chat — no accounts, no checkout friction.' },
     ],
     evidence: [
       { label: 'Live', value: 'GitHub Pages', note: 'Public booking website.' },
-      {
-        label: 'Travellers',
-        value: '50+',
-        note: 'Happy travellers, per the live site.',
-      },
-      {
-        label: 'Destinations',
-        value: '10+',
-        note: 'Across northern Pakistan, per the live site.',
-      },
+      { label: 'Travellers', value: '50+', note: 'Happy travellers, per the live site.' },
+      { label: 'Destinations', value: '10+', note: 'Across northern Pakistan, per the live site.' },
     ],
     limitations: [
       'Booking is WhatsApp-based; there is no online payment.',
@@ -184,10 +126,8 @@ export const projects: Project[] = [
     name: 'EduRace',
     category: 'Mobile + Backend',
     kind: 'Gamified learning platform · Flutter + Firebase',
-    summary:
-      'A gamified MCQ learning and racing platform: real-time multiplayer quiz battles with leaderboards, teacher dashboards and AI-enhanced insights — built with Flutter and Firebase.',
-    problem:
-      'Revision is lonely and easy to postpone. EduRace turns MCQs into live races so students compete, practise and improve together.',
+    summary: 'A gamified MCQ learning and racing platform: real-time multiplayer quiz battles with leaderboards, teacher dashboards and AI-enhanced insights — built with Flutter and Firebase.',
+    problem: 'Revision is lonely and easy to postpone. EduRace turns MCQs into live races so students compete, practise and improve together.',
     role: 'Built as a full-stack, cross-platform edtech platform (as shared on LinkedIn).',
     status: 'Built and shared publicly (2026).',
     featured: true,
@@ -201,30 +141,13 @@ export const projects: Project[] = [
       'AI-enhanced learning insights',
     ],
     approach: [
-      {
-        title: 'Race, don’t revise alone',
-        body: 'MCQ battles turn practice into live multiplayer races.',
-      },
-      {
-        title: 'Keep everyone in sync',
-        body: 'Cloud Firestore syncs race state and progress in real time.',
-      },
-      {
-        title: 'Serve both sides',
-        body: 'Students get dashboards and rewards; teachers get an admin dashboard and structured content.',
-      },
+      { title: 'Race, don’t revise alone', body: 'MCQ battles turn practice into live multiplayer races.' },
+      { title: 'Keep everyone in sync', body: 'Cloud Firestore syncs race state and progress in real time.' },
+      { title: 'Serve both sides', body: 'Students get dashboards and rewards; teachers get an admin dashboard and structured content.' },
     ],
     evidence: [
-      {
-        label: 'Platform',
-        value: 'Flutter + Firebase',
-        note: 'Cross-platform app with real-time sync.',
-      },
-      {
-        label: 'Modes',
-        value: 'Races + dashboards',
-        note: 'Student racing, teacher admin, progress analytics.',
-      },
+      { label: 'Platform', value: 'Flutter + Firebase', note: 'Cross-platform app with real-time sync.' },
+      { label: 'Modes', value: 'Races + dashboards', note: 'Student racing, teacher admin, progress analytics.' },
     ],
     limitations: [
       'No public demo or repository link is published for this project yet.',
@@ -237,10 +160,8 @@ export const projects: Project[] = [
     name: 'University Course Management System',
     category: 'Full-Stack',
     kind: 'Course platform · FSD Lab 08',
-    summary:
-      'A university course platform with student/admin roles, secure login and full course management — built for FSD Lab 08.',
-    problem:
-      'Course enrolment paperwork is slow and error-prone. This system gives students a searchable catalogue and admins full control over courses and users.',
+    summary: 'A university course platform with student/admin roles, secure login and full course management — built for FSD Lab 08.',
+    problem: 'Course enrolment paperwork is slow and error-prone. This system gives students a searchable catalogue and admins full control over courses and users.',
     role: 'Built for Full Stack Development Lab 08, Air University Kamra.',
     status: 'Coursework project — complete and verified end to end.',
     featured: false,
@@ -252,25 +173,12 @@ export const projects: Project[] = [
       'Seeded demo accounts and six sample courses',
     ],
     approach: [
-      {
-        title: 'Secure the doors',
-        body: 'bcrypt hashing and JWT sessions; protected routes return 401 without a token.',
-      },
-      {
-        title: 'Model the domain',
-        body: 'A MySQL schema (UniversityDB) for users, courses and enrolments.',
-      },
-      {
-        title: 'Verify live',
-        body: 'Tested against a real database: login, course listing and unauthorised access all checked.',
-      },
+      { title: 'Secure the doors', body: 'bcrypt hashing and JWT sessions; protected routes return 401 without a token.' },
+      { title: 'Model the domain', body: 'A MySQL schema (UniversityDB) for users, courses and enrolments.' },
+      { title: 'Verify live', body: 'Tested against a real database: login, course listing and unauthorised access all checked.' },
     ],
     evidence: [
-      {
-        label: 'Smoke tests',
-        value: '15/15 passed',
-        note: 'Auth and validation checks against the live server.',
-      },
+      { label: 'Smoke tests', value: '15/15 passed', note: 'Auth and validation checks against the live server.' },
       { label: 'Syntax checks', value: '12/12 passed', note: 'Whole codebase.' },
     ],
     limitations: [
@@ -285,10 +193,8 @@ export const projects: Project[] = [
     name: 'AccessDesk',
     category: 'Full-Stack',
     kind: 'Access portal · FSD Assignment 05',
-    summary:
-      'A role-based customer access portal: one MySQL database shared by four API-key roles, each with its own row limits, credit allowance and visible fields — enforced on the server.',
-    problem:
-      'One customer database, four kinds of callers. Guests should see names only; admins need usage data. AccessDesk puts every permission decision on the server, so the browser never decides what a caller may see.',
+    summary: 'A role-based customer access portal: one MySQL database shared by four API-key roles, each with its own row limits, credit allowance and visible fields — enforced on the server.',
+    problem: 'One customer database, four kinds of callers. Guests should see names only; admins need usage data. AccessDesk puts every permission decision on the server, so the browser never decides what a caller may see.',
     role: 'Full Stack Web Development Assignment 05, Air University Kamra.',
     status: 'Coursework project — Oct 2026.',
     featured: false,
@@ -301,35 +207,14 @@ export const projects: Project[] = [
       'No credentials or permission logic in the browser',
     ],
     approach: [
-      {
-        title: 'Identify first',
-        body: 'Every request carries an API key in the x-api-key header; unknown keys get 401 before anything else runs.',
-      },
-      {
-        title: 'Check in order',
-        body: 'One middleware chain enforces action permission, database/table allow-listing and credit balance, each with its own status code.',
-      },
-      {
-        title: 'Return only what is allowed',
-        body: 'Row limits and column whitelists are applied per role, and search uses bound parameters — never string-built SQL.',
-      },
+      { title: 'Identify first', body: 'Every request carries an API key in the x-api-key header; unknown keys get 401 before anything else runs.' },
+      { title: 'Check in order', body: 'One middleware chain enforces action permission, database/table allow-listing and credit balance, each with its own status code.' },
+      { title: 'Return only what is allowed', body: 'Row limits and column whitelists are applied per role, and search uses bound parameters — never string-built SQL.' },
     ],
     evidence: [
-      {
-        label: 'Roles',
-        value: '4',
-        note: 'Guest, Student, Teacher, Admin — each with row limit and credits.',
-      },
-      {
-        label: 'Checks',
-        value: '5-step chain',
-        note: '401 → 403 → 403 → 429 → validated SQL.',
-      },
-      {
-        label: 'Docs',
-        value: '13-page report',
-        note: 'Design, API routes, security analysis and verification cases.',
-      },
+      { label: 'Roles', value: '4', note: 'Guest, Student, Teacher, Admin — each with row limit and credits.' },
+      { label: 'Checks', value: '5-step chain', note: '401 → 403 → 403 → 429 → validated SQL.' },
+      { label: 'Docs', value: '13-page report', note: 'Design, API routes, security analysis and verification cases.' },
     ],
     limitations: [
       'Academic assignment; credits live in server memory and reset on restart.',
@@ -344,10 +229,8 @@ export const projects: Project[] = [
     name: 'Maze Explorer',
     category: 'Algorithms · C++',
     kind: 'Graph game · DSA project',
-    summary:
-      'A graph-based adventure game in C++: DFS generates the maze, BFS finds the shortest path.',
-    problem:
-      'Graph algorithms are easy to memorise and hard to feel. Maze Explorer turns DFS and BFS into something you can watch and play.',
+    summary: 'A graph-based adventure game in C++: DFS generates the maze, BFS finds the shortest path.',
+    problem: 'Graph algorithms are easy to memorise and hard to feel. Maze Explorer turns DFS and BFS into something you can watch and play.',
     role: 'Data Structures & Algorithms project, Air University Kamra.',
     status: 'Coursework project — 2025.',
     featured: false,
@@ -359,25 +242,12 @@ export const projects: Project[] = [
       'Modular C++ architecture',
     ],
     approach: [
-      {
-        title: 'Generate with DFS',
-        body: 'Depth-first search carves a new maze every run.',
-      },
-      {
-        title: 'Solve with BFS',
-        body: 'Breadth-first search finds the shortest path through it.',
-      },
-      {
-        title: 'Make it a game',
-        body: 'Real-time rendering and a leaderboard turn the algorithms into play.',
-      },
+      { title: 'Generate with DFS', body: 'Depth-first search carves a new maze every run.' },
+      { title: 'Solve with BFS', body: 'Breadth-first search finds the shortest path through it.' },
+      { title: 'Make it a game', body: 'Real-time rendering and a leaderboard turn the algorithms into play.' },
     ],
     evidence: [
-      {
-        label: 'Algorithms',
-        value: 'DFS + BFS',
-        note: 'Generation and solving in one game.',
-      },
+      { label: 'Algorithms', value: 'DFS + BFS', note: 'Generation and solving in one game.' },
     ],
     limitations: [
       'Coursework game, not a commercial release.',
@@ -391,10 +261,8 @@ export const projects: Project[] = [
     name: 'Pharmacy Management System',
     category: 'Desktop · Java',
     kind: 'Pharmacy system · OOP project',
-    summary:
-      'A desktop pharmacy system with role-based access, MySQL inventory and real-time stock updates.',
-    problem:
-      'A pharmacy juggles stock, sales and three kinds of users. Pharma Ease gives each role — admin, seller, customer — exactly the screens they need.',
+    summary: 'A desktop pharmacy system with role-based access, MySQL inventory and real-time stock updates.',
+    problem: 'A pharmacy juggles stock, sales and three kinds of users. Pharma Ease gives each role — admin, seller, customer — exactly the screens they need.',
     role: 'Object Oriented Programming project, Air University Kamra.',
     status: 'Coursework project — 2025.',
     featured: false,
@@ -406,14 +274,8 @@ export const projects: Project[] = [
       'Modular class design with controller pattern and Swing UI',
     ],
     approach: [
-      {
-        title: 'Separate the roles',
-        body: 'Admins manage stock, sellers sell, customers browse — one codebase, three views.',
-      },
-      {
-        title: 'Keep stock honest',
-        body: 'Every sale updates MySQL inventory immediately.',
-      },
+      { title: 'Separate the roles', body: 'Admins manage stock, sellers sell, customers browse — one codebase, three views.' },
+      { title: 'Keep stock honest', body: 'Every sale updates MySQL inventory immediately.' },
     ],
     evidence: [{ label: 'Roles', value: '3', note: 'Admin, seller, customer.' }],
     limitations: [
@@ -428,10 +290,8 @@ export const projects: Project[] = [
     name: 'Inventory Management System',
     category: 'Web · C#',
     kind: 'Inventory system · Visual Programming',
-    summary:
-      'A Blazor inventory system with role-based authorisation and synchronised stock state.',
-    problem:
-      'Small inventories drift out of sync when stock, carts and permissions live in different places. This system keeps one shared state behind role-based access.',
+    summary: 'A Blazor inventory system with role-based authorisation and synchronised stock state.',
+    problem: 'Small inventories drift out of sync when stock, carts and permissions live in different places. This system keeps one shared state behind role-based access.',
     role: 'Visual Programming lab project, Air University Kamra.',
     status: 'Coursework project — 2025.',
     featured: false,
@@ -442,14 +302,8 @@ export const projects: Project[] = [
       'State synchronisation across views',
     ],
     approach: [
-      {
-        title: 'One state',
-        body: 'AppState holds the shared inventory state every view reads.',
-      },
-      {
-        title: 'Guard the actions',
-        body: 'AuthService checks roles before stock or cart changes are allowed.',
-      },
+      { title: 'One state', body: 'AppState holds the shared inventory state every view reads.' },
+      { title: 'Guard the actions', body: 'AuthService checks roles before stock or cart changes are allowed.' },
     ],
     evidence: [
       { label: 'Framework', value: 'Blazor / .NET', note: 'Visual Programming coursework.' },
@@ -474,10 +328,7 @@ export const projects: Project[] = [
     stack: ['C#', 'Blazor', '.NET'],
     highlights: ['Task and appointment workflows', 'Built with Blazor/C#'],
     approach: [
-      {
-        title: 'One list for the day',
-        body: 'Tasks and appointments share a single workflow instead of two tools.',
-      },
+      { title: 'One list for the day', body: 'Tasks and appointments share a single workflow instead of two tools.' },
     ],
     evidence: [
       { label: 'Framework', value: 'Blazor / .NET', note: 'Visual Programming coursework.' },
@@ -491,14 +342,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((p) => p.featured);
+projectSchema.array().parse(projects);
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
-}
-
-/** WordPress mshot URL for the two projects with real live demos. */
-export function projectShot(project: Project): string | null {
-  if (!project.demo) return null;
-  return `https://s0.wp.com/mshots/v1/${encodeURIComponent(project.demo)}?w=800`;
-}
+export const featuredProjects = projects.filter((project) => project.featured);
+export function getProject(slug: string): Project | undefined { return projects.find((project) => project.slug === slug); }

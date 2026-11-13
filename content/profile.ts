@@ -1,7 +1,6 @@
 export const profile = {
   name: 'Wasif Ali',
   role: 'Full-Stack Developer',
-  heroLine: 'Build it. Ship it. Make it useful.',
   headline: 'I build software that ships — and stays useful.',
   location: 'Kamra, Punjab, Pakistan',
   education: 'BS Computer Science · Air University, Kamra Campus',
@@ -14,21 +13,8 @@ export const profile = {
   instagram: 'https://www.instagram.com/dude_itx_wasifali',
   fiverr: 'https://www.fiverr.com/wasif_annotator',
   domain: 'https://wasifportfolio-phi.vercel.app',
-  availability: 'Available for Opportunities',
-  summary:
-    'Computer Science undergraduate at Air University Kamra building full-stack apps and websites — from Appointly, an appointment platform with in-app chat and calls, to the live websites of OASIS Foundation and GoSafar. I like the part where an idea becomes something people can actually use.',
-  focus: [
-    'Full-stack web & mobile apps',
-    'Flutter & Dart',
-    'Databases & APIs',
-    'Data annotation for ML',
-  ],
-  stats: [
-    { value: '10', label: 'Projects documented here' },
-    { value: '3.47', label: 'CGPA / 4.00' },
-    { value: '1,000+', label: 'LinkedIn followers' },
-    { value: 'Director IT', label: '@ OASIS Foundation' },
-  ],
+  summary: 'Computer Science undergraduate at Air University Kamra building full-stack apps and websites — from Appointly, an appointment platform with in-app chat and calls, to the live websites of OASIS Foundation and GoSafar. I like the part where an idea becomes something people can actually use.',
+  focus: ['Full-stack web & mobile apps', 'Flutter & Dart', 'Databases & APIs', 'Data annotation for ML'],
   educationHistory: [
     {
       title: 'BS Computer Science',
@@ -71,7 +57,7 @@ export const profile = {
       location: 'Attock, Punjab, Pakistan',
       period: 'Jun 2026 — Present',
       details: [
-        'Built and run the website for a Lahore car-rental, tours and rides service: fleet listings, northern-areas tour packages and WhatsApp-based booking.',
+        'Built and run the website for a tours and group-trips service in northern Pakistan: tour packages, 4x4 jeep safaris and WhatsApp-based booking.',
       ],
     },
     {
@@ -121,8 +107,7 @@ export const profile = {
       title: 'President — Coding Arena ’25',
       organization: 'Dept. of Computer Science, Air University Kamra',
       period: 'Dec 2025',
-      detail:
-        'Led planning and execution of a university-wide competitive coding event; recognised with a Certificate of Appreciation by the Head of Department.',
+      detail: 'Led planning and execution of a university-wide competitive coding event; recognised with a Certificate of Appreciation by the Head of Department.',
     },
     {
       title: 'Class Representative — BS CS F’24 B',
@@ -175,56 +160,6 @@ export const profile = {
         'Decision Making',
         'Organisation & Planning',
       ],
-    },
-  ],
-  principles: [
-    {
-      title: 'Useful beats impressive-looking.',
-      body: 'Work that can be read, used and improved by someone other than its author.',
-    },
-    {
-      title: 'Ship the whole thing.',
-      body: 'An idea is not done when the code runs — it is done when someone can use it.',
-    },
-    {
-      title: 'Show the work honestly.',
-      body: 'Results, limits and what is still in progress — all on the page.',
-    },
-  ],
-  services: [
-    {
-      title: 'Web development',
-      body: 'Full-stack websites and web apps — from live business sites to course platforms with auth and admin roles.',
-    },
-    {
-      title: 'App development',
-      body: 'Cross-platform Flutter apps with real backends: chat, calls, real-time sync and dashboards.',
-    },
-    {
-      title: 'Data annotation',
-      body: 'Image annotation and data labelling for ML teams — bounding box, polygon, polyline, keypoint and more. Available on Fiverr.',
-      link: 'https://www.fiverr.com/wasif_annotator',
-      linkLabel: 'See the Fiverr gig',
-    },
-  ],
-  additionalCoursework: [
-    {
-      title: 'CN Project',
-      detail:
-        'Computer Networks, 2026 — network design in Cisco Packet Tracer, with proposal, report and presentation.',
-    },
-    {
-      title: 'Real-Time Digital Clock & Stopwatch in x86 Assembly',
-      detail:
-        'MASM, Irvine32, Win32 API, 2026 — real-time updates, start/stop/reset, time-set mode, alarm settings, accuracy verified against a mobile clock.',
-    },
-    {
-      title: 'Climate Impact Calculator',
-      detail: 'C++, 2024 — emissions & AQI calculator, 100% pass rate across test cases incl. invalid inputs.',
-    },
-    {
-      title: 'Digital Stopwatch',
-      detail: 'Digital Logic Design, 2024 — logic gates + ICs, 7-segment display.',
     },
   ],
 } as const;
