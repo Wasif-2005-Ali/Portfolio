@@ -851,16 +851,39 @@ button {
   flex-shrink: 0;
 }
 
-.project-shot img {
+.project-shot img,
+.project-shot video {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
   object-position: top center;
   transition: transform .5s var(--ease-house);
+}
+
+/* Demo video on a case-study page (projects with no live site). */
+.project-video-player {
+  margin: 0;
+}
+
+.project-video-player video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #000;
+}
+
+.project-video-player figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
 }@media (hover: hover) and (pointer: fine) {
 
-.project-card:hover .project-shot img {
+.project-card:hover .project-shot img,
+.project-card:hover .project-shot video {
   transform: scale(1.03);
 }}
 
@@ -5917,7 +5940,8 @@ html.custom-cursor-on [data-cursor="native"] * {
     border-bottom: 1px solid var(--border);
   }
 
-  .stack-card-media .project-shot img {
+  .stack-card-media .project-shot img,
+  .stack-card-media .project-shot video {
     position: absolute;
     inset: 0;
     width: 100%;
