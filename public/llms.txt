@@ -14,7 +14,7 @@
 
 - Appointly — appointment booking with in-app chat and voice/video calls (Flutter + Django): https://wasif-portfolio.vercel.app/projects/appointly
 - OASIS Foundation Website — live at https://oasisfoundation.net
-- GoSafar — car rentals, tours and rides, live at https://gosafar.pk
+- GoSafar — tours, group trips and rides in northern Pakistan, live at https://wasif-2005-ali.github.io/gosafar-website/
 - EduRace — gamified MCQ learning and racing platform (Flutter + Firebase)
 
 ## Contact
