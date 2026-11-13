@@ -2,7 +2,7 @@
 
 Personal portfolio of Wasif Ali, Full-Stack Developer.
 
-**Live site:** https://wasifportfolio-phi.vercel.app
+**Live site:** https://wasif-ali.me
 
 Built with Next.js 15, React 19, TypeScript and Tailwind CSS.
 
