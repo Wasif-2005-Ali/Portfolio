@@ -3,7 +3,7 @@ import { projectSchema } from '@/lib/validation/content';
 export type Project = {
   slug: string;
   name: string;
-  category: 'Mobile + Backend' | 'Web · Live' | 'Full-Stack' | 'Algorithms · C++' | 'Desktop · Java' | 'Web · C#';
+  category: 'Mobile + Backend' | 'Web · Live' | 'Full-Stack' | 'Algorithms · C++' | 'Desktop · Java' | 'Web · C#' | 'Systems · Assembly';
   kind: string;
   summary: string;
   problem: string;
@@ -159,6 +159,43 @@ export const projects: Project[] = [
     ],
     video: '/videos/edurace.mp4',
     videoCaption: 'Full demo: login, dashboard, City Track race — 5/5 correct, 105 XP — leaderboard and badges.',
+    accent: 'paper',
+  },
+  {
+    slug: 'real-time-digital-clock-stopwatch',
+    name: 'Real-Time Digital Clock & Stopwatch',
+    category: 'Systems · Assembly',
+    kind: 'Multi-function time UI · x86 Assembly',
+    summary: 'A real-time digital clock and stopwatch in x86 Assembly — a 7-segment ASCII display, live date, 12/24-hour toggle and a millisecond-precision stopwatch, all driven by a keyboard state machine.',
+    problem: 'A console clock is easy to fake and hard to make feel alive. This one renders huge 7-segment digits from ASCII blocks, keeps real system time via the Win32 API, and switches between clock, stopwatch and about screens without flicker.',
+    role: 'COAL semester project (solo), Air University Kamra.',
+    status: 'Complete — presented with a live demo (2026).',
+    featured: false,
+    stack: ['x86 Assembly', 'MASM', 'Irvine32', 'Win32 API'],
+    highlights: [
+      '7-segment ASCII digits rendered from # blocks, 6 rows × 6 cols',
+      'Live clock via GetLocalTime, refreshing every ~50 ms',
+      'Millisecond-precision stopwatch with pause-safe elapsed time',
+      '12/24-hour toggle with noon and midnight edge cases handled',
+      'Keyboard-driven 3-mode state machine (Clock, Stopwatch, About)',
+      'Colour-cycling display with flicker-free redraws',
+    ],
+    approach: [
+      { title: 'Draw digits, don’t print them', body: 'Each digit is a 7-segment figure drawn from # blocks by dedicated SegA–SegG procedures, with a colon separator between pairs.' },
+      { title: 'One loop, three modes', body: 'A state machine (currentMode) dispatches input and rendering between clock, stopwatch and about screens.' },
+      { title: 'Fix the environment, not the user', body: 'A +12-hour wrap-around compensates for Wine’s broken AM-only time reporting, and a needsClear flag defers screen clears to mode changes.' },
+    ],
+    evidence: [
+      { label: 'Code', value: '763 lines', note: 'Single Project.asm file, 14 procedures.' },
+      { label: 'Refresh', value: '~50 ms', note: 'Live clock updates via GetLocalTime.' },
+    ],
+    limitations: [
+      'Console application; runs under Wine or Windows with MASM.',
+      'Time fix is specific to the Wine environment it was demoed in.',
+    ],
+    repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/4rth%20Semseter/Coal/Coal%20Semester%20Project',
+    video: '/videos/digital-clock-stopwatch.mp4',
+    videoCaption: 'Full presentation and live demo — slides, the running clock and stopwatch, and the assembly source.',
     accent: 'paper',
   },
   {
