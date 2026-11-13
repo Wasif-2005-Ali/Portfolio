@@ -2,7 +2,7 @@
 
 Personal portfolio of Wasif Ali, Computer Science undergraduate at Air University Kamra.
 
-**Live site:** https://wasif-portfolio.vercel.app
+**Live site:** https://wasifportfolio-phi.vercel.app
 
 ## About
 
@@ -46,7 +46,7 @@ Content lives in `content/` — updating a project or article is a data edit, no
 
 ## Connect
 
-- Portfolio: https://wasif-portfolio.vercel.app
+- Portfolio: https://wasifportfolio-phi.vercel.app
 - GitHub: https://github.com/Wasif-2005-Ali
 - LinkedIn: https://www.linkedin.com/in/wasif-a-27620532a
 - Email: bestwasifali@gmail.com
