@@ -18,13 +18,13 @@
 
 ## Pages
 
-- [Home](https://wasifportfolio-phi.vercel.app/): selected work and introduction.
-- [Projects](https://wasifportfolio-phi.vercel.app/projects): case studies explaining each project's problem, approach, evidence and open questions.
-- [Writing](https://wasifportfolio-phi.vercel.app/writing): technical writing.
-- [About](https://wasifportfolio-phi.vercel.app/about)
-- [CV](https://wasifportfolio-phi.vercel.app/cv)
-- [Contact](https://wasifportfolio-phi.vercel.app/contact)
-- [Links](https://wasifportfolio-phi.vercel.app/links)
+- [Home](https://wasif-ali.me/): selected work and introduction.
+- [Projects](https://wasif-ali.me/projects): case studies explaining each project's problem, approach, evidence and open questions.
+- [Writing](https://wasif-ali.me/writing): technical writing.
+- [About](https://wasif-ali.me/about)
+- [CV](https://wasif-ali.me/cv)
+- [Contact](https://wasif-ali.me/contact)
+- [Links](https://wasif-ali.me/links)
 
 ## Elsewhere
 
