@@ -18,6 +18,7 @@ export const projectSchema = z.object({
   limitations: z.array(z.string().trim().min(10)).min(1).max(20),
   repo: httpsUrl.optional(),
   demo: httpsUrl.optional(),
+  video: z.string().startsWith('/').optional(),
   accent: z.enum(['orange', 'ink', 'paper'])
 }).strict();
 
