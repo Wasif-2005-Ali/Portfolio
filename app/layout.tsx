@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const siteUrl = 'https://wasif-portfolio.vercel.app';
+const siteUrl = 'https://wasifportfolio-phi.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
