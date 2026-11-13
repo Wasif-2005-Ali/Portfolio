@@ -257,6 +257,7 @@ export const projects: Project[] = [
       'Desktop C++ project; no web version.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/Presentation_Projects/3rd%20Semester/DSA',
+    video: '/videos/maze-explorer.mp4',
     accent: 'ink',
   },
   {
