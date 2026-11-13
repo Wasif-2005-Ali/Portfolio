@@ -18,6 +18,7 @@ export type Project = {
   repo?: string;
   demo?: string;
   video?: string;
+  videoCaption?: string;
   image?: string;
   accent: 'orange' | 'ink' | 'paper';
 };
@@ -54,6 +55,7 @@ export const projects: Project[] = [
       'No public demo yet — the app runs locally while the hosted backend is being finished.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/appointly-frontend',
+    image: '/images/appointly.png',
     accent: 'orange',
   },
   {
@@ -189,6 +191,7 @@ export const projects: Project[] = [
     ],
     repo: 'https://github.com/Wasif-2005-Ali/University',
     video: '/videos/course-management-system.mp4',
+    videoCaption: 'Demo walkthrough of the University Course Management System — register, log in, browse courses, and manage the catalogue as an admin.',
     accent: 'orange',
   },
   {
@@ -225,6 +228,8 @@ export const projects: Project[] = [
       'Demo API keys are for the assignment only — no key values are published here.',
     ],
     repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/5th%20Semester/FSD%20Lab/Assignment%20no%2002',
+    video: '/videos/accessdesk.mp4',
+    videoCaption: 'Demo of AccessDesk — four API-key roles, row limits, field limits, credits, and the 401 / 403 / 429 responses.',
     accent: 'orange',
   },
   {
@@ -258,6 +263,7 @@ export const projects: Project[] = [
     ],
     repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/Presentation_Projects/3rd%20Semester/DSA',
     video: '/videos/maze-explorer.mp4',
+    videoCaption: 'Presentation and gameplay demo of Maze Explorer — DFS maze generation, BFS solving and the leaderboard.',
     accent: 'ink',
   },
   {
@@ -361,24 +367,35 @@ export const projects: Project[] = [
     name: 'Task & Appointment Management System',
     category: 'Web · C#',
     kind: 'Task manager · Visual Programming',
-    summary: 'A Blazor task and appointment manager built during Visual Programming coursework.',
-    problem: 'Tasks and appointments compete for the same day. This tool keeps both in one place.',
+    summary: 'A Blazor task and appointment manager with a dashboard, role-based user management, and status tracking for every task.',
+    problem: 'Tasks and appointments compete for the same day. This tool keeps both in one place — a dashboard of what is coming up, a task list with statuses, and appointments with dates and times.',
     role: 'Visual Programming coursework, Air University Kamra.',
-    status: 'Coursework project.',
+    status: 'Coursework project — 2025.',
     featured: false,
     stack: ['C#', 'Blazor', '.NET'],
-    highlights: ['Task and appointment workflows', 'Built with Blazor/C#'],
+    highlights: [
+      'Dashboard with upcoming appointments and task counts',
+      'Task list with status tracking (Pending, In Progress, Completed)',
+      'Appointment scheduling with date and time',
+      'User management with Admin and User roles',
+      'Add, edit and delete tasks, appointments and users',
+    ],
     approach: [
-      { title: 'One list for the day', body: 'Tasks and appointments share a single workflow instead of two tools.' },
+      { title: 'See the day at a glance', body: 'The dashboard shows upcoming appointments and how many tasks are pending, in progress or done.' },
+      { title: 'Track every task', body: 'Tasks carry a title, description, due date and status, updated from the list itself.' },
+      { title: 'Control who can do what', body: 'Admin and User roles gate the Manage Users section.' },
     ],
     evidence: [
       { label: 'Framework', value: 'Blazor / .NET', note: 'Visual Programming coursework.' },
+      { label: 'Sections', value: '4', note: 'Dashboard, Tasks, Appointments, Manage Users.' },
     ],
     limitations: [
       'Coursework tool; no live deployment.',
-      'Details are as documented in the repository.',
+      'Demo data only — the walkthrough uses sample tasks and appointments.',
     ],
-    repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/Presentation_Projects/3rd%20Semester/VP',
+    repo: 'https://github.com/Wasif-2005-Ali/University/tree/main/Presentation_Projects/3rd%20Semester/VP/Task_Appointmtnet%20Management%20System',
+    video: '/videos/task-management-system.mp4',
+    videoCaption: 'Full walkthrough of the Task & Appointment Management System — dashboard, tasks, appointments and user management.',
     accent: 'ink',
   },
 ];
