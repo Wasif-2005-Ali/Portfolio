@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowUpRight, Github } from 'lucide-react';
 import type { Project } from '@/content/projects';
 import { ProjectShot } from './project-shot';
+import { ProjectVideoCard } from './project-video';
 import { VisitPill } from './visit-pill';
 
 /**
@@ -145,7 +146,9 @@ export function ProjectStack({ projects }: { projects: Project[] }) {
             <div className="stack-card-media">
               {project.demo
                 ? <ProjectShot demo={project.demo} name={project.name} width={1200} />
-                : (
+                : project.video
+                  ? <ProjectVideoCard video={project.video} name={project.name} slug={project.slug} />
+                  : (
                   <div className="stack-card-cover" aria-hidden="true">
                     <span className="stack-card-cover-mono">{project.name.split(' ').filter(Boolean).slice(0, 2).map((word) => word[0]).join('')}</span>
                     <span className="stack-card-cover-name">{project.name}</span>
