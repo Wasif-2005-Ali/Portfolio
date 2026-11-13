@@ -17,3 +17,20 @@ export function ProjectVideoPlayer({ video, name }: { video: string; name: strin
     </figure>
   );
 }
+
+export function ProjectImageCard({ image, name, slug }: { image: string; name: string; slug: string }) {
+  return (
+    <Link className="project-shot" href={`/projects/${slug}`} aria-label={`Read the case study of ${name}`}>
+      <img src={image} alt={`${name} illustration`} loading="lazy" />
+    </Link>
+  );
+}
+
+export function ProjectImageFigure({ image, name }: { image: string; name: string }) {
+  return (
+    <figure className="project-image-figure">
+      <img src={image} alt={`${name} illustration`} />
+      <figcaption>A look at {name}.</figcaption>
+    </figure>
+  );
+}
