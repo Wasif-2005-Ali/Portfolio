@@ -157,6 +157,8 @@ export const projects: Project[] = [
       'No public demo or repository link is published for this project yet.',
       'AI insights are described as a feature, not a measured result.',
     ],
+    video: '/videos/edurace.mp4',
+    videoCaption: 'Full demo: login, dashboard, City Track race — 5/5 correct, 105 XP — leaderboard and badges.',
     accent: 'paper',
   },
   {
